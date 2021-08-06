@@ -1,0 +1,20 @@
+@import '../../../styles/_variables.scss';
+
+.main-navbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: $main-nav-height;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.navbar-offset {
+  padding-top: $main-nav-height;
+}
+.main-navbar-top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: $main-nav-height;
+}

@@ -11,45 +11,36 @@ import 'react-app-polyfill/stable';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import FontFaceObserver from 'fontfaceobserver';
-
+import { ChakraProvider } from '@chakra-ui/react';
 // Use consistent styling
 import 'sanitize.css/sanitize.css';
 
+// Import root app
 import { App } from 'app';
 
 import { HelmetProvider } from 'react-helmet-async';
 
 import { configureAppStore } from 'store/configureStore';
 
-import { ThemeProvider } from 'styles/theme/ThemeProvider';
-
 import reportWebVitals from 'reportWebVitals';
 
 // Initialize languages
 import './locales/i18n';
-
-// Observe loading of Inter (to remove 'Inter', remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Inter', {});
-
-// When Inter is loaded, add a font-family using Inter to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-});
-
+import './index.scss';
+import theme from 'styles/chakraTheme';
+import 'swiper/swiper.scss';
 const store = configureAppStore();
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 ReactDOM.render(
   <Provider store={store}>
-    <ThemeProvider>
-      <HelmetProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </HelmetProvider>
-    </ThemeProvider>
+    <HelmetProvider>
+      {/* <React.StrictMode> */}
+      <ChakraProvider resetCSS theme={theme}>
+        <App />
+      </ChakraProvider>
+      {/* </React.StrictMode> */}
+    </HelmetProvider>
   </Provider>,
   MOUNT_NODE,
 );
