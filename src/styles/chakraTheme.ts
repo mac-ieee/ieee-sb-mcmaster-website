@@ -2,14 +2,14 @@ import { extendTheme, ThemeConfig, withDefaultSize } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
 const config: ThemeConfig = {
-  // initialColorMode: 'dark',
+  initialColorMode: 'light',
   useSystemColorMode: false,
 };
 
 const theme = extendTheme(
   withDefaultSize({
-    size: 'md',
-    components: ['Button', 'Input'],
+    size: 'lg',
+    components: ['Input', 'Button'],
   }),
   {
     colors: {
@@ -17,9 +17,15 @@ const theme = extendTheme(
         primary: '#750035', // maroon
         darkprimary: '#4f0023',
         secondary: '#FBB93E', // yellow
+        satSecondary: '#FCA400',
       },
     },
     components: {
+      Heading: {
+        baseStyle: props => ({
+          color: mode('black', 'white')(props),
+        }),
+      },
       Drawer: {
         // setup light/dark mode component defaults
         baseStyle: props => ({
@@ -33,6 +39,7 @@ const theme = extendTheme(
         baseStyle: props => ({
           dialog: {
             bg: mode('gray.100', '#141214')(props),
+            fontSize: 'md',
           },
         }),
         defaultProps: {
@@ -40,9 +47,13 @@ const theme = extendTheme(
         },
       },
       Text: {
-        baseStyle: {
+        baseStyle: props => ({
           fontSize: 'sm',
-        },
+          color: mode('blackAlpha.700', 'whiteAlpha.800')(props),
+        }),
+        defaultProps: props => ({
+          color: mode('blackAlpha.700', 'whiteAlpha.800')(props),
+        }),
       },
       FormLabel: {
         baseStyle: {
@@ -67,6 +78,10 @@ const theme = extendTheme(
       Button: {
         baseStyle: {
           fontWeight: 'normal',
+          fontSize: 'md',
+        },
+        defaultProps: {
+          fontSize: 'md',
         },
         variants: {
           primary: {
@@ -74,6 +89,20 @@ const theme = extendTheme(
             color: 'white',
             _hover: {
               bg: 'brand.darkprimary',
+            },
+          },
+          secondary: {
+            bg: 'brand.secondary',
+            color: 'brand.primary',
+            _hover: {
+              bg: 'brand.satSecondary',
+            },
+          },
+          outline: {
+            borderColor: 'blackAlpha.700',
+            _hover: {
+              bg: 'black',
+              color: 'white',
             },
           },
         },
@@ -95,10 +124,11 @@ const theme = extendTheme(
       global: props => ({
         body: {
           bg: mode('#F5F5F7', '#141214')(props),
-        },
-        p: {
           color: mode('blackAlpha.700', 'whiteAlpha.900')(props),
         },
+        // p: {
+        //   color: mode('blackAlpha.700', 'whiteAlpha.900')(props),
+        // },
       }),
     },
     config,

@@ -16,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { AboutUs } from './pages/About Us/Loadable';
 import MainNavbar from './components/MainNavbar';
 import { Events } from './pages/Events/Loadable';
+import Footer from './components/Footer';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -35,6 +36,7 @@ export function App() {
         <Route path="/events" component={Events} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
       {/* <GlobalStyle /> */}
     </BrowserRouter>
   );

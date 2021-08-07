@@ -6,6 +6,7 @@ import {
   IconButton,
   Button,
   Stack,
+  VStack,
   Collapse,
   Icon,
   Popover,
@@ -15,6 +16,14 @@ import {
   useBreakpointValue,
   useDisclosure,
   Heading,
+  Spacer,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -22,96 +31,125 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './Navbar/navbar.scss';
-
+import { useEffect, useState } from 'react';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import React from 'react';
 export default function MainNavbar() {
-  const { isOpen, onToggle } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [showScrollStyle, setShowScrollStyle] = useState(false);
+  const btnRef = React.useRef();
+  const closeRef = React.useRef();
+  const history = useHistory();
 
+  const handleScroll = () => {
+    setTimeout(() => {
+      if (window.scrollY > 200 && !showScrollStyle) {
+        setShowScrollStyle(true);
+      } else {
+        setShowScrollStyle(false);
+      }
+    }, 500);
+  };
+
+  useEffect(() => {
+    console.log('history changed');
+    console.log(history);
+  }, [history]);
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
   return (
     <Box>
       <Flex
         className="main-navbar"
         bg="whiteAlpha.800"
-        // bg={useColorModeValue('whiteAlpha.600', 'gray.800')}
         color={useColorModeValue('gray.600', 'white')}
         py={{ base: 2 }}
         px={{ base: 4 }}
-        // borderBottom={1}
-        // borderStyle={'solid'}
-        // borderColor={useColorModeValue('gray.200', 'gray.900')}
         align="center"
         zIndex="999"
       >
         <Flex
-          flex={{ base: 1, md: 'auto' }}
+          //flex={{ base: 1, md: 'auto' }}
           ml={{ base: -2 }}
           display={{ base: 'flex', md: 'none' }}
         >
           <IconButton
-            onClick={onToggle}
+            onClick={onOpen}
             icon={
               isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
             }
+            ref={btnRef}
+            size="sm"
             variant={'ghost'}
             aria-label={'Toggle Navigation'}
           />
         </Flex>
-        <Flex
-          alignItems="center"
-          flex={{ base: 1 }}
-          justify={{ base: 'center', md: 'start' }}
-        >
+        <Flex alignItems="center" flex={{ base: 1 }} justify="start">
           <Heading
             as={Link}
             to="/"
             size="md"
             textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
             // color={useColorModeValue('gray.800', 'white')}
+            display={{ base: 'none', md: 'block' }}
             color="brand.primary"
           >
-            IEEE McMaster Student Branch
+            IEEE {showScrollStyle ? 'MSB' : 'McMaster Student Branch'}
           </Heading>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Spacer />
+          <Flex display={{ base: 'none', md: 'flex' }}>
             <DesktopNav />
           </Flex>
         </Flex>
-
-        {/* <Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}
-        >
-          <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'CLink'}
-            href={'#'}
-          >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'brand.primary'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Sign Up
-          </Button>
-        </Stack> */}
       </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
-      </Collapse>
+      <Drawer
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+      >
+        <DrawerOverlay />
+        <DrawerContent bg="white">
+          <VStack>
+            <Flex
+              className={'main-navbar-h'}
+              py={{ base: 2 }}
+              px={{ base: 4 }}
+              alignSelf="flex-start"
+              alignItems="center"
+            >
+              <Heading
+                to="/"
+                size="md"
+                textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+                // color={useColorModeValue('gray.800', 'white')}
+                color="brand.primary"
+              >
+                IEEE MSB
+              </Heading>
+              <Spacer />
+              <DrawerCloseButton ref={closeRef} />
+            </Flex>
+            <VStack display={{ md: 'none' }} spacing={0} w="100%">
+              {NAV_ITEMS.map(navItem => (
+                <MobileNavItem
+                  key={navItem.label}
+                  onClose={onClose}
+                  {...navItem}
+                />
+              ))}
+            </VStack>
+          </VStack>
+        </DrawerContent>
+      </Drawer>
     </Box>
   );
 }
@@ -122,25 +160,23 @@ const DesktopNav = () => {
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack direction={'row'} spacing={0}>
       {NAV_ITEMS.map(navItem => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
-              <CLink
+              <Button
                 as={Link}
-                p={2}
+                colorScheme="blackAlpha"
+                variant="ghost"
+                size="sm"
                 to={navItem.href ?? '#'}
                 fontSize={'sm'}
                 fontWeight={500}
-                color={CLinkColor}
-                _hover={{
-                  textDecoration: 'none',
-                  color: CLinkHoverColor,
-                }}
+                color="black"
               >
                 {navItem.label}
-              </CLink>
+              </Button>
             </PopoverTrigger>
 
             {navItem.children && (
@@ -205,50 +241,44 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
 
 const MobileNav = () => {
   return (
-    <Stack
-      bg={useColorModeValue('white', 'gray.800')}
-      p={4}
-      display={{ md: 'none' }}
-    >
+    <VStack display={{ md: 'none' }} spacing={0} w="100%">
       {NAV_ITEMS.map(navItem => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-    </Stack>
+    </VStack>
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
-  const { isOpen, onToggle } = useDisclosure();
+const MobileNavItem = ({ label, children, href, onClose }: NavItem) => {
+  const history = useHistory();
 
+  const handleLinkClick = href => {
+    history.push(href);
+    onClose();
+  };
   return (
-    <Stack spacing={4} onClick={children && onToggle}>
-      <Flex
-        py={2}
-        as={Link}
-        to="/"
-        href={href ?? '#'}
-        justify={'space-between'}
-        align={'center'}
-        _hover={{
-          textDecoration: 'none',
-        }}
+    <>
+      <Button
+        w="inherit"
+        size="lg"
+        px={4}
+        onClick={() => handleLinkClick(href)}
+        variant="ghost"
+        fontWeight={600}
+        justifyContent="flex-start"
+        color={useColorModeValue('gray.600', 'gray.200')}
       >
-        <Text
-          fontWeight={600}
-          color={useColorModeValue('gray.600', 'gray.200')}
-        >
-          {label}
-        </Text>
-        {children && (
-          <Icon
-            as={ChevronDownIcon}
-            transition={'all .25s ease-in-out'}
-            transform={isOpen ? 'rotate(180deg)' : ''}
-            w={6}
-            h={6}
-          />
-        )}
-      </Flex>
+        {label}
+      </Button>
+      {/* {children && (
+        <Icon
+          as={ChevronDownIcon}
+          transition={'all .25s ease-in-out'}
+          transform={isOpen ? 'rotate(180deg)' : ''}
+          w={6}
+          h={6}
+        />
+      )}
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
@@ -266,8 +296,8 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
               </CLink>
             ))}
         </Stack>
-      </Collapse>
-    </Stack>
+      </Collapse> */}
+    </>
   );
 };
 
@@ -276,16 +306,17 @@ interface NavItem {
   subLabel?: string;
   children?: Array<NavItem>;
   href?: string;
+  onClose?: () => void;
 }
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: 'About Us',
-    href: '/about-us',
-  },
-  {
     label: 'Events',
     href: '/events',
+  },
+  {
+    label: 'About Us',
+    href: '/about-us',
   },
   //   {
   //     label: 'Find Work',

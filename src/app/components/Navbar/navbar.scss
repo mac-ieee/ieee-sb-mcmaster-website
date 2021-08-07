@@ -9,12 +9,18 @@
   backdrop-filter: blur(8px);
 }
 
+.main-navbar-h {
+  height: $main-nav-height;
+}
+
 .navbar-offset {
   padding-top: $main-nav-height;
 }
+
 .main-navbar-top {
   position: fixed;
   left: 0;
   right: 0;
+  background: transparent !important;
   height: $main-nav-height;
 }

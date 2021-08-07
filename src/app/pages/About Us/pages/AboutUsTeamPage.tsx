@@ -6,13 +6,20 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
-import { Box, Flex, Grid, Heading, Text, VStack, Wrap } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Grid,
+  Heading,
+  Text,
+  VStack,
+  Wrap,
+  Badge,
+  SimpleGrid,
+} from '@chakra-ui/react';
 import { teamMembers } from '../schema/teamMembers';
 import MemberCard from '../components/MemberCard';
 
-interface MemberData {
-  role: string;
-}
 interface Props {}
 
 const AboutUsTeamPage = (props: Props) => {
@@ -21,23 +28,30 @@ const AboutUsTeamPage = (props: Props) => {
   return (
     <>
       <VStack spacing={8} alignItems="flex-start">
-        <Flex
+        <VStack
           p={16}
           className="rounded"
           w="100%"
           bg="brand.secondary"
           color="white"
+          alignItems="flex-start"
         >
+          <Badge colorScheme="blackAlpha">Chapter</Badge>
           <Heading size="3xl">{name}</Heading>
-        </Flex>
-        <Heading size="xl" bgGradient="linear(to-r, black,black)" bgClip="text">
+        </VStack>
+        <Heading size="lg" bgGradient="linear(to-r, black,black)" bgClip="text">
           Executives
         </Heading>
-        <Grid w="100%" templateColumns="repeat(5, 1fr)" gap={8}>
+
+        <SimpleGrid
+          w="100%"
+          columns={{ base: 1, sm: 2, md: 4, lg: 5 }}
+          spacing={8}
+        >
           {Object.keys(execs).map((key: any) => {
             return <MemberCard name={key} role={execs[key].role} />;
           })}
-        </Grid>
+        </SimpleGrid>
       </VStack>
     </>
   );
