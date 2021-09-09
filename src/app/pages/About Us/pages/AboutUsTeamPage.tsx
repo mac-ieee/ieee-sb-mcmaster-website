@@ -6,17 +6,7 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
-import {
-  Box,
-  Flex,
-  Grid,
-  Heading,
-  Text,
-  VStack,
-  Wrap,
-  Badge,
-  SimpleGrid,
-} from '@chakra-ui/react';
+import { Heading, VStack, Badge, SimpleGrid } from '@chakra-ui/react';
 import { teamMembers } from '../schema/teamMembers';
 import MemberCard from '../components/MemberCard';
 
@@ -36,7 +26,9 @@ const AboutUsTeamPage = (props: Props) => {
           color="white"
           alignItems="flex-start"
         >
-          <Badge colorScheme="blackAlpha">Chapter</Badge>
+          {teamId !== 'main-branch' && (
+            <Badge colorScheme="blackAlpha">Chapter</Badge>
+          )}
           <Heading size="3xl">{name}</Heading>
         </VStack>
         <Heading size="lg" bgGradient="linear(to-r, black,black)" bgClip="text">

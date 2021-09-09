@@ -23,11 +23,14 @@ export function App() {
   return (
     <BrowserRouter>
       <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
+        titleTemplate="%s | IEEE McMaster Student Branch"
+        defaultTitle="IEEE McMaster Student Branch"
         htmlAttributes={{ lang: i18n.language }}
       >
-        <meta name="description" content="A React Boilerplate application" />
+        <meta
+          name="description"
+          content="Welcome to the McMaster IEEE Student Branch!"
+        />
       </Helmet>
       <MainNavbar />
       <Switch>

@@ -31,10 +31,10 @@ const Events = (props: Props) => {
   return (
     <>
       <Helmet>
-        <title>About Us</title>
+        <title>Event</title>
         <meta
           name="description"
-          content="About the IEEE McMaster Student Branch"
+          content="Details of the Event hosted by IEEE McMaster Student Branch"
         />
       </Helmet>
       <Box className="navbar-offset"></Box>

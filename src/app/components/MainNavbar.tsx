@@ -65,7 +65,7 @@ export default function MainNavbar() {
       <Flex
         className="main-navbar"
         bg="whiteAlpha.800"
-        color={useColorModeValue('gray.600', 'white')}
+        color={useColorModeValue('whiteAlpha.600', 'white')}
         py={{ base: 2 }}
         px={{ base: 4 }}
         align="center"
@@ -97,7 +97,10 @@ export default function MainNavbar() {
             display={{ base: 'none', md: 'block' }}
             color="brand.primary"
           >
-            IEEE {showScrollStyle ? 'MSB' : 'McMaster Student Branch'}
+            IEEE{' '}
+            {showScrollStyle
+              ? 'McMaster Student Branch'
+              : 'McMaster Student Branch'}
           </Heading>
 
           <Spacer />

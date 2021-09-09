@@ -116,7 +116,7 @@ export function HomePage() {
               <VStack spacing={8} alignItems="flex-start">
                 <Box>
                   <Badge mb={4}>Attend A workshop!</Badge>
-                  <Heading size="2xl">🔧 Upcoming Events & Workshops</Heading>
+                  <Heading size="2xl">Upcoming Events & Workshops</Heading>
                 </Box>
                 <Text fontSize="lg">
                   Check out a preview of events happening soon. Learn a new
@@ -137,28 +137,6 @@ export function HomePage() {
               </VStack>
               <EventSwiper evts={upcomingEvts} />
             </SimpleGrid>
-            {/* <VStack spacing={8} px={8} py={24} w="100%">
-              <Box textAlign="center">
-                <Heading size="2xl">Upcoming Events & Workshops</Heading>
-                <Text fontSize="xl">
-                  Check out some of the upcoming events/workshops we're going to
-                  be hosting. Learn a new skill or meet new
-                </Text>
-              </Box>
-              <EventsGrid items={6} />
-
-              <Button
-                w="100%"
-                leftIcon={<RiCalendarEventLine />}
-                size="xl"
-                variant="outline"
-                p={4}
-                as={Link}
-                to={'/events'}
-              >
-                View All Events & Workshops -&gt;
-              </Button>
-            </VStack> */}
           </Container>
         </Box>
         {/* <VStack spacing={8} py={24} w="100%">
