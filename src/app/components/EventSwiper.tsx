@@ -27,8 +27,6 @@ const EventSwiper = (props: Props) => {
         //direction={'vertical'}
         slidesPerView={1}
         spaceBetween={30}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={swiper => console.log(swiper)}
         style={{ paddingBottom: '50px' }}
       >
         {props.evts.map(evt => {

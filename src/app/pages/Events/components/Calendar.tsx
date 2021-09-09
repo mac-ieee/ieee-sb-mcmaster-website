@@ -52,10 +52,7 @@ const Calendar = (props: Props) => {
   }, []);
 
   const formattedEvents = React.useMemo(() => {}, [events]);
-  console.log(events);
-  const handleEventClick = e => {
-    console.log(e);
-  };
+  const handleEventClick = e => {};
 
   const handleDateClick = (date: DateClickArg) => {
     setPickedDate(date);

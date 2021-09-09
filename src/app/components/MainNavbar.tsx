@@ -53,10 +53,7 @@ export default function MainNavbar() {
     }, 500);
   };
 
-  useEffect(() => {
-    console.log('history changed');
-    console.log(history);
-  }, [history]);
+  useEffect(() => {}, [history]);
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {

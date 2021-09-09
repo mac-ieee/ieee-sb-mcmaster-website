@@ -20,7 +20,6 @@ interface Props {}
 const SingleEventPage = (props: Props) => {
   const { eventId } = useParams<any>();
   const [evt, setEvt] = React.useState<any>({});
-  console.log(evt);
   React.useEffect(() => {
     axios
       .get(
@@ -31,7 +30,6 @@ const SingleEventPage = (props: Props) => {
       });
   }, []);
   const evtDetails = _.pick(evt, ['location']);
-  console.log(evtDetails);
   return (
     <VStack
       className="rounded-children"
