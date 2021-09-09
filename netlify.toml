@@ -1,4 +1,0 @@
-[build.environment]
-  NODE_VERSION = "14.0.0"
-  YARN_VERSION = "1.22.10"
-  NPM_VERSION = "6.4.1"
