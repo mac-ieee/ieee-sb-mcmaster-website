@@ -6,31 +6,57 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
-import { Heading, VStack, Badge, SimpleGrid } from '@chakra-ui/react';
-import { teamMembers } from '../schema/teamMembers';
+import {
+  Heading,
+  VStack,
+  Badge,
+  SimpleGrid,
+  Image,
+  Box,
+} from '@chakra-ui/react';
+import { teamData } from '../schema/teamData';
 import MemberCard from '../components/MemberCard';
 
 interface Props {}
 
+export const ChapterHeader = (props: { name: string; logo: any }) => {
+  return (
+    <Box
+      p={{ base: 4, lg: 8 }}
+      className="rounded"
+      w="100%"
+      bg="brand.secondary"
+      color="white"
+      alignItems="flex-start"
+      position="relative"
+    >
+      <Heading fontSize={{ base: '2xl', lg: '6xl' }} zIndex="1">
+        {props.name}
+      </Heading>
+      <Box
+        bgImage={props.logo}
+        w="100%"
+        h="100%"
+        top="0"
+        left="0"
+        right="0"
+        bgPos="right"
+        bgSize="cover"
+        position="absolute"
+        filter="grayscale(1) brightness(3)"
+        opacity="0.2"
+        blendMode="overlay"
+      />
+    </Box>
+  );
+};
 const AboutUsTeamPage = (props: Props) => {
   const { teamId } = useParams<any>();
-  const { execs, name } = teamMembers[teamId];
+  const { execs, name, logo } = teamData[teamId];
   return (
     <>
-      <VStack spacing={8} alignItems="flex-start">
-        <VStack
-          p={16}
-          className="rounded"
-          w="100%"
-          bg="brand.secondary"
-          color="white"
-          alignItems="flex-start"
-        >
-          {teamId !== 'main-branch' && (
-            <Badge colorScheme="blackAlpha">Chapter</Badge>
-          )}
-          <Heading size="3xl">{name}</Heading>
-        </VStack>
+      <VStack spacing={{ base: 4, lg: 8 }} alignItems="flex-start">
+        <ChapterHeader name={name} logo={logo} />
         <Heading size="lg" bgGradient="linear(to-r, black,black)" bgClip="text">
           Executives
         </Heading>

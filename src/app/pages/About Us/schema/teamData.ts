@@ -1,6 +1,9 @@
-export const teamMembers = {
+import { Logo, PESLogo, CSLogo, EMBSLogo } from 'assets/logos/logos';
+
+export const teamData = {
   'main-branch': {
     name: 'Main Branch',
+    logo: Logo,
     execs: {
       'Isaiah Ngou': {
         role: 'Branch Co-Chair',
@@ -33,6 +36,7 @@ export const teamMembers = {
   },
   computer: {
     name: 'Computer',
+    logo: CSLogo,
     execs: {
       'Calvin Suen': {
         role: 'Computer Chapter Chair',
@@ -50,9 +54,10 @@ export const teamMembers = {
   },
   'power-and-energy-society': {
     name: 'Power and Energy Society',
+    logo: PESLogo,
     execs: {
       'Edward Kang': {
-        role: 'PES Chair ',
+        role: 'PES Chair',
       },
       'Evan Tanudjaja': {
         role: 'PES Vice-Chair',
@@ -61,6 +66,7 @@ export const teamMembers = {
   },
   'engineering-in-medicine-and-biology-society': {
     name: 'Engineering In Medicine & Biology Society',
+    logo: EMBSLogo,
     execs: {
       'Namya Mehan': {
         role: 'EMBS Chair',

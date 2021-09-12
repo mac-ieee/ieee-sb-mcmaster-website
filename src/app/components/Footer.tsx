@@ -17,9 +17,7 @@ import {
 } from '@chakra-ui/react';
 import { contactInfo, socialInfo } from 'app/_data/data';
 import React from 'react';
-import EceImage from '../../assets/ece.png';
-import IeeeImg from '../../assets/ieeecanada.png';
-import IeeeSBImg from '../../assets/ieeesb.png';
+import { Logo } from 'assets/logos/logos';
 import {
   RiFacebookFill,
   RiInstagramFill,
@@ -88,7 +86,7 @@ const Footer = (props: Props) => {
             placeItems="center"
           >
             <VStack alignItems="flex-start" spacing={4}>
-              <Image src={IeeeSBImg} w="150px" filter="grayscale(100%)" />
+              <Image src={Logo} w="100px" filter="grayscale(100%)" />
               <Heading size="md">IEEE McMaster Student Branch</Heading>
               {renderContactInfo()}
               {renderSocialInfo()}

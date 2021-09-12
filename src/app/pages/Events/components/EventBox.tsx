@@ -13,10 +13,15 @@ import {
 import { Link, useRouteMatch } from 'react-router-dom';
 import moment from 'moment';
 import _ from 'lodash';
-interface Props {
-  evt: any;
+
+type Props = {
+  evt?: any;
   h?: string;
-}
+};
+
+// type PlaceholderProps = { placeholder?: false } | { placeholder: true };
+
+// type Props = PlaceholderProps & DataProps;
 
 //const colors = ['blue', 'cyan', 'green', 'orange', 'teal', 'purple', 'pink'];
 const EventBox = (props: Props) => {
@@ -31,6 +36,23 @@ const EventBox = (props: Props) => {
       return moment(obj.date).format('MMMM Do YYYY');
     }
   };
+
+  if (!evt) {
+    return (
+      <Box
+        w="100%"
+        alignItems="center"
+        justifyContent="center"
+        h="100%"
+        minH="200px"
+        className="rounded hover-line"
+        bg={`blackAlpha.100`}
+        display="flex"
+      >
+        There are no upcoming events.
+      </Box>
+    );
+  }
   return (
     <DarkMode>
       <Box

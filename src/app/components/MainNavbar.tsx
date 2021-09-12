@@ -8,6 +8,7 @@ import {
   Stack,
   VStack,
   Collapse,
+  Container,
   Icon,
   Popover,
   PopoverTrigger,
@@ -24,6 +25,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Image,
 } from '@chakra-ui/react';
 import {
   HamburgerIcon,
@@ -36,6 +38,7 @@ import './Navbar/navbar.scss';
 import { useEffect, useState } from 'react';
 import { AnimateSharedLayout, motion } from 'framer-motion';
 import React from 'react';
+import { Logo } from 'assets/logos/logos';
 export default function MainNavbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showScrollStyle, setShowScrollStyle] = useState(false);
@@ -63,56 +66,64 @@ export default function MainNavbar() {
   return (
     <Box>
       <Flex
-        className="main-navbar"
-        bg="whiteAlpha.800"
-        color={useColorModeValue('whiteAlpha.600', 'white')}
+        className="main-navbar gmd-2"
+        bg="white"
+        color={useColorModeValue('black', 'white')}
         py={{ base: 2 }}
-        px={{ base: 4 }}
         align="center"
         zIndex="999"
       >
-        <Flex
-          //flex={{ base: 1, md: 'auto' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}
-        >
-          <IconButton
-            onClick={onOpen}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            ref={btnRef}
-            size="sm"
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
-        </Flex>
-        <Flex alignItems="center" flex={{ base: 1 }} justify="start">
-          <Heading
-            as={Link}
-            to="/"
-            size="md"
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            // color={useColorModeValue('gray.800', 'white')}
-            display={{ base: 'none', md: 'block' }}
-            color="brand.primary"
-          >
-            IEEE{' '}
-            {showScrollStyle
-              ? 'McMaster Student Branch'
-              : 'McMaster Student Branch'}
-          </Heading>
-
-          <Spacer />
-          <Flex display={{ base: 'none', md: 'flex' }}>
-            <DesktopNav />
+        <Container>
+          <Flex display={{ base: 'flex', md: 'none' }}>
+            <Link to="/">
+              <Image src={Logo} w="30px" h="30px" />
+            </Link>
+            <Spacer />
+            <Flex>
+              <IconButton
+                onClick={onOpen}
+                icon={
+                  isOpen ? (
+                    <CloseIcon w={3} h={3} />
+                  ) : (
+                    <HamburgerIcon w={5} h={5} />
+                  )
+                }
+                ref={btnRef}
+                size="sm"
+                variant={'ghost'}
+                aria-label={'Toggle Navigation'}
+              />
+              <Spacer />
+            </Flex>
           </Flex>
-        </Flex>
+          <Flex alignItems="center" flex={{ base: 1 }} justify="start">
+            <Heading
+              as={Link}
+              to="/"
+              size="md"
+              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
+              // color={useColorModeValue('gray.800', 'white')}
+              display={{ base: 'none', md: 'block' }}
+              color="brand.primary"
+            >
+              IEEE{' '}
+              {showScrollStyle
+                ? 'McMaster Student Branch'
+                : 'McMaster Student Branch'}
+            </Heading>
+
+            <Spacer />
+            <Flex display={{ base: 'none', md: 'flex' }}>
+              <DesktopNav />
+            </Flex>
+          </Flex>
+        </Container>
       </Flex>
 
       <Drawer
         isOpen={isOpen}
-        placement="left"
+        placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
       >
@@ -125,6 +136,8 @@ export default function MainNavbar() {
               px={{ base: 4 }}
               alignSelf="flex-start"
               alignItems="center"
+              w="100%"
+              bg="blackAlpha.50"
             >
               <Heading
                 to="/"
@@ -138,11 +151,11 @@ export default function MainNavbar() {
               <Spacer />
               <DrawerCloseButton ref={closeRef} />
             </Flex>
-            <VStack display={{ md: 'none' }} spacing={0} w="100%">
+            <VStack display={{ md: 'none' }} spacing={0} w="100%" p={4}>
               {NAV_ITEMS.map(navItem => (
                 <MobileNavItem
                   key={navItem.label}
-                  onClose={onClose}
+                  drawerClose={onClose}
                   {...navItem}
                 />
               ))}
@@ -181,14 +194,14 @@ const DesktopNav = () => {
 
             {navItem.children && (
               <PopoverContent
-                border={0}
                 boxShadow={'xl'}
+                // border="1px solid blackAlpha.200"
                 bg={popoverContentBgColor}
-                p={4}
+                p={2}
                 rounded={'xl'}
                 minW={'sm'}
               >
-                <Stack>
+                <Stack spacing={0}>
                   {navItem.children.map(child => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
@@ -210,13 +223,13 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+      _hover={{ bg: useColorModeValue('blackAlpha.200', 'gray.900') }}
     >
-      <Stack direction={'row'} align={'center'}>
+      <Stack direction={'row'} align={'center'} spacing={0}>
         <Box>
           <Text
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
+            _groupHover={{ color: '' }}
             fontWeight={500}
           >
             {label}
@@ -232,7 +245,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
           align={'center'}
           flex={1}
         >
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'brand.primary'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </CLink>
@@ -249,36 +262,30 @@ const MobileNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, children, href, onClose }: NavItem) => {
+const MobileNavItem = ({ label, children, href, drawerClose }: NavItem) => {
   const history = useHistory();
 
-  const handleLinkClick = href => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const handleLinkClick = () => {
+    drawerClose();
     history.push(href);
-    onClose();
   };
   return (
     <>
       <Button
         w="inherit"
-        size="lg"
+        size="md"
         px={4}
-        onClick={() => handleLinkClick(href)}
+        onClick={children ? (isOpen ? onClose : onOpen) : handleLinkClick}
         variant="ghost"
         fontWeight={600}
         justifyContent="flex-start"
         color={useColorModeValue('gray.600', 'gray.200')}
+        rightIcon={children ? <ChevronDownIcon /> : null}
       >
         {label}
       </Button>
-      {/* {children && (
-        <Icon
-          as={ChevronDownIcon}
-          transition={'all .25s ease-in-out'}
-          transform={isOpen ? 'rotate(180deg)' : ''}
-          w={6}
-          h={6}
-        />
-      )}
 
       <Collapse in={isOpen} animateOpacity style={{ marginTop: '0!important' }}>
         <Stack
@@ -296,7 +303,7 @@ const MobileNavItem = ({ label, children, href, onClose }: NavItem) => {
               </CLink>
             ))}
         </Stack>
-      </Collapse> */}
+      </Collapse>
     </>
   );
 };
@@ -306,13 +313,34 @@ interface NavItem {
   subLabel?: string;
   children?: Array<NavItem>;
   href?: string;
-  onClose?: () => void;
+  drawerClose?: () => void;
 }
 
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'Events',
     href: '/events',
+  },
+  {
+    label: 'Chapters',
+    children: [
+      {
+        label: 'Main Branch',
+        href: '/chapters/main-branch',
+      },
+      {
+        label: 'Computer',
+        href: '/chapters/computer',
+      },
+      {
+        label: 'Power and Energy Society',
+        href: '/chapters/power-and-energy-society',
+      },
+      {
+        label: 'Engineering In Medicine & Biology Society',
+        href: '/chapters/engineering-in-medicine-and-biology-society',
+      },
+    ],
   },
   {
     label: 'About Us',

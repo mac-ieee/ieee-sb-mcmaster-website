@@ -17,6 +17,7 @@ import { AboutUs } from './pages/About Us/Loadable';
 import MainNavbar from './components/MainNavbar';
 import { Events } from './pages/Events/Loadable';
 import Footer from './components/Footer';
+import { Chapters } from './pages/Chapters/Loadable';
 
 export function App() {
   const { i18n } = useTranslation();
@@ -37,6 +38,7 @@ export function App() {
         <Route exact path="/" component={HomePage} />
         <Route path="/about-us" component={AboutUs} />
         <Route path="/events" component={Events} />
+        <Route path="/chapters/:chapterId" component={Chapters} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />

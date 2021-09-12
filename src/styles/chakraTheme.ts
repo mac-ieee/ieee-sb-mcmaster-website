@@ -6,6 +6,10 @@ const config: ThemeConfig = {
   useSystemColorMode: false,
 };
 
+export const responsiveSpacing = {
+  lg: 8,
+  base: 4,
+};
 const theme = extendTheme(
   withDefaultSize({
     size: 'lg',

@@ -75,13 +75,7 @@ const Events = (props: Props) => {
                     ></iframe>
                   </GridItem>
                   <GridItem>
-                    <VStack
-                      bg="brand."
-                      p={4}
-                      w="100%"
-                      spacing={4}
-                      alignItems="flex-start"
-                    >
+                    <VStack w="100%" spacing={4} alignItems="flex-start">
                       <Heading size="md" mb={4}>
                         Upcoming
                       </Heading>

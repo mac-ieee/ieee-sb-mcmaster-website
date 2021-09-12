@@ -11,11 +11,12 @@ import {
   AspectRatio,
   Badge,
   SimpleGrid,
+  GridItem,
+  Stack,
 } from '@chakra-ui/react';
-import MainNavbar from 'app/components/MainNavbar';
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation } from 'swiper/core';
 
@@ -25,19 +26,15 @@ import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
 import './homepage.scss';
 import EventSwiper from 'app/components/EventSwiper';
-import Availability from 'app/components/Availability';
-import EventsGrid from './components/EventsGrid';
 import { RiCalendarEventLine } from 'react-icons/ri';
-import IEEEMSBLogo from '../../../assets/ieeesb.png';
 import { MotionBox } from 'app/components/MotionComponents';
 import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
-const quickLinks = {
-  // Events: '/events',
-  // Availability: '/',
-  // Services: '/',
-};
+import { Logo, EMBSLogo, PESLogo, CSLogo } from 'assets/logos/logos';
+import { teamData } from '../About Us/schema/teamData';
+import { responsiveSpacing } from 'styles/chakraTheme';
 
 export function HomePage() {
+  const history = useHistory();
   const [upcomingEvts, setUpcomingEvts] = React.useState([]);
   React.useEffect(() => {
     getUpcomingEvents(6).then(evts => setUpcomingEvts(evts));
@@ -46,9 +43,12 @@ export function HomePage() {
     <>
       <Helmet>
         <title>Home Page</title>
-        <meta name="description" content="A Boilerplate application homepage" />
+        <meta
+          name="description"
+          content="Home Page of the IEEE McMaster Student Branch"
+        />
       </Helmet>
-      <VStack className="navbar-offset" spacing={0}>
+      <VStack bg="white" className="navbar-offset" spacing={0}>
         <VStack
           className="homepage-header-bg"
           align="center"
@@ -59,12 +59,9 @@ export function HomePage() {
           color="white"
           px={8}
           pb={16}
-          spacing={8}
-          //bgGradient="linear(to-b, blackAlpha.200,white)"
+          spacing={responsiveSpacing}
           bg="brand.primary"
         >
-          {/* <Image w="200px" src={IEEEMSBLogo} /> */}
-
           <MotionBox
             animate={{ opacity: 1, scale: 1 }}
             initial={{ opacity: 0, scale: 1.1 }}
@@ -89,72 +86,86 @@ export function HomePage() {
               fontWeight="100"
               bgGradient="linear(to-b, brand.primary,brand.secondary)"
               bgClip="text"
+              display={{ base: 'none', md: 'block' }}
             >
               IEEE McMaster <br />
               Student Branch
             </Heading>
           </Box>
-
-          {/* <HStack>
-            {Object.keys(quickLinks).map(key => {
+        </VStack>
+        <Container>
+          <SimpleGrid
+            className="rounded"
+            justifyItems="center"
+            // py={responsiveSpacing}
+            p={responsiveSpacing}
+            gap={responsiveSpacing}
+            bg="whiteAlpha.900"
+            backdropFilter="blur(10px)"
+            boxShadow="xl"
+            mt={{ base: '-15vw', lg: '-15vh' }}
+            mb={responsiveSpacing}
+            columns={{ base: 1, md: 4 }}
+          >
+            {Object.keys(teamData).map(key => {
               return (
-                <Text
-                  as={Link}
-                  to={quickLinks[key]}
-                  fontSize="lg"
-                  className="p-hover-bold"
+                <Stack
+                  className="rounded hover-line"
+                  p={responsiveSpacing}
+                  w="100%"
+                  bg="blackAlpha.50"
+                  direction={{ base: 'row', md: 'column' }}
+                  alignItems="center"
+                  spacing={8}
+                  onClick={() => history.push(`/chapters/${key}`)}
+                  cursor="pointer"
                 >
-                  {key}
-                </Text>
+                  <Image
+                    w={{ base: '50px', md: '150px' }}
+                    src={teamData[key].logo}
+                  />
+
+                  <Heading textAlign={{ base: 'left', md: 'center' }} size="md">
+                    {teamData[key].name}
+                  </Heading>
+                </Stack>
               );
             })}
-          </HStack> */}
-        </VStack>
-        <Box bg="whiteAlpha.900" w="100%" py={16}>
-          <Container maxW="container.lg">
-            <SimpleGrid columns={{ base: 1, md: 2 }} gap={16}>
-              <VStack spacing={8} alignItems="flex-start">
-                <Box>
-                  <Badge mb={4}>Attend A workshop!</Badge>
-                  <Heading size="2xl">Upcoming Events & Workshops</Heading>
-                </Box>
-                <Text fontSize="lg">
-                  Check out a preview of events happening soon. Learn a new
-                  skill, meet new people, or just have fun!
-                </Text>
+          </SimpleGrid>
+        </Container>
 
-                <Button
-                  leftIcon={<RiCalendarEventLine />}
-                  size="xl"
-                  variant="secondary"
-                  p={4}
-                  as={Link}
-                  to={'/events'}
-                  className="float-up"
-                >
-                  View All Events & Workshops -&gt;
-                </Button>
-              </VStack>
-              <EventSwiper evts={upcomingEvts} />
+        <Box bg="whiteAlpha.900" w="100%" py={responsiveSpacing}>
+          <Container>
+            <SimpleGrid columns={{ base: 1, md: 3 }} gap={responsiveSpacing}>
+              <GridItem colSpan={1}>
+                <VStack spacing={responsiveSpacing} alignItems="flex-start">
+                  <Box>
+                    <Heading size="2xl">Upcoming Events & Workshops</Heading>
+                  </Box>
+                  <Text fontSize="lg">
+                    Check out a preview of events happening soon. Learn a new
+                    skill, meet new people, or just have fun!
+                  </Text>
+
+                  <Button
+                    leftIcon={<RiCalendarEventLine />}
+                    size="xl"
+                    variant="secondary"
+                    p={4}
+                    as={Link}
+                    to={'/events'}
+                    className="float-up"
+                  >
+                    View All Events & Workshops -&gt;
+                  </Button>
+                </VStack>
+              </GridItem>
+              <GridItem h="100%" colSpan={2}>
+                <EventSwiper evts={upcomingEvts} />
+              </GridItem>
             </SimpleGrid>
           </Container>
         </Box>
-        {/* <VStack spacing={8} py={24} w="100%">
-          <Heading>IEEE Exec Availability</Heading>
-          <Availability />
-        </VStack> */}
-        {/* <VStack
-          justifyContent="center"
-          py={24}
-          px={{ base: 8 }}
-          w="100%"
-          bg="brand.secondary"
-          mt="0"
-          spacing={4}
-        >
-          <Heading>So, you want to join IEEE?</Heading>
-          <Button variant="outline">Yes, I do!</Button>
-        </VStack> */}
       </VStack>
     </>
   );

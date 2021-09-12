@@ -16,27 +16,35 @@ interface Props {
 
 const EventSwiper = (props: Props) => {
   return (
-    <VStack className="rounded" bg="transparent" textAlign="center" spacing={8}>
-      <Swiper
-        className="event-swiper"
-        pagination
-        autoplay={{
-          delay: 10000,
-          disableOnInteraction: true,
-        }}
-        //direction={'vertical'}
-        slidesPerView={1}
-        spaceBetween={30}
-        style={{ paddingBottom: '50px' }}
-      >
-        {props.evts.map(evt => {
-          return (
-            <SwiperSlide style={{}}>
-              <EventBox h="100%" key={evt.id} evt={evt} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+    <VStack
+      className="rounded"
+      height="100%"
+      bg="transparent"
+      textAlign="left"
+      spacing={{ base: 4, lg: 8 }}
+    >
+      {props.evts.length ? (
+        <Swiper
+          className="event-swiper"
+          pagination
+          autoplay={{
+            delay: 10000,
+            disableOnInteraction: true,
+          }}
+          slidesPerView={2}
+          spaceBetween={15}
+        >
+          {props.evts.map(evt => {
+            return (
+              <SwiperSlide>
+                <EventBox h="100%" key={evt.id} evt={evt} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      ) : (
+        <EventBox h="100%" />
+      )}
     </VStack>
   );
 };
