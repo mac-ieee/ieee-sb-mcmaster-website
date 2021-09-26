@@ -86,7 +86,7 @@ export function HomePage() {
               fontWeight="100"
               bgGradient="linear(to-b, brand.primary,brand.secondary)"
               bgClip="text"
-              display={{ base: 'none', md: 'block' }}
+              display={{ base: 'none', xl: 'block' }}
             >
               IEEE McMaster <br />
               Student Branch
