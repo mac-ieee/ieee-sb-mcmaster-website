@@ -4,7 +4,7 @@ export const teamData = {
   'main-branch': {
     name: 'Main Branch',
     logo: Logo,
-    emoji: '👋',
+    emoji: '🏠',
     execs: {
       'Isaiah Ngou': {
         role: 'Branch Co-Chair',

@@ -221,7 +221,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       href={href}
       role={'group'}
       display={'block'}
-      p={2}
+      p={1}
       rounded={'md'}
       _hover={{ bg: useColorModeValue('blackAlpha.200', 'gray.900') }}
     >
