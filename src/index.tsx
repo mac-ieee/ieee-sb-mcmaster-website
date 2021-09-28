@@ -35,13 +35,10 @@ const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 ReactDOM.render(
   <Provider store={store}>
     <HelmetProvider>
-      {/* <React.StrictMode> */}
-
       <ChakraProvider resetCSS theme={theme}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
         <App />
       </ChakraProvider>
-      {/* </React.StrictMode> */}
     </HelmetProvider>
   </Provider>,
   MOUNT_NODE,

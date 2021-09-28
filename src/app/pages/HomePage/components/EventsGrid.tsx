@@ -26,7 +26,7 @@ const EventsGrid = (props: Props) => {
       .then(res => {
         setUpcomingEvts(res.data.items);
       });
-  }, []);
+  }, [items]);
   return (
     <SimpleGrid
       className="rounded-children"
@@ -37,16 +37,6 @@ const EventsGrid = (props: Props) => {
       {upcomingEvts.map(evt => {
         return <EventBox h="200px" key={evt.id} evt={evt} />;
       })}
-
-      {/* <Box
-        display={{ base: 'none', md: 'flex' }}
-        alignItems="center"
-        justifyContent="center"
-        h="200px"
-        bg="blackAlpha.200"
-      >
-        More coming soon!
-      </Box> */}
     </SimpleGrid>
   );
 };
