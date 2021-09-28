@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { calendarId, gAPIKey } from 'app/_data/data';
+import { calendarId, gAPIKey } from 'app/data/data';
 import { SimpleGrid, Box } from '@chakra-ui/layout';
 import EventBox from '../../Events/components/EventBox';
 interface Props {

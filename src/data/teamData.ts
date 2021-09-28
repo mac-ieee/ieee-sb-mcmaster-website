@@ -4,6 +4,7 @@ export const teamData = {
   'main-branch': {
     name: 'Main Branch',
     logo: Logo,
+    emoji: '👋',
     execs: {
       'Isaiah Ngou': {
         role: 'Branch Co-Chair',
@@ -36,6 +37,7 @@ export const teamData = {
   },
   computer: {
     name: 'Computer',
+    emoji: '💻',
     logo: CSLogo,
     execs: {
       'Calvin Suen': {
@@ -55,6 +57,7 @@ export const teamData = {
   'power-and-energy-society': {
     name: 'Power and Energy Society',
     logo: PESLogo,
+    emoji: '⚡',
     execs: {
       'Edward Kang': {
         role: 'PES Chair',
@@ -67,6 +70,7 @@ export const teamData = {
   'engineering-in-medicine-and-biology-society': {
     name: 'Engineering In Medicine & Biology Society',
     logo: EMBSLogo,
+    emoji: '⚕️',
     execs: {
       'Namya Mehan': {
         role: 'EMBS Chair',

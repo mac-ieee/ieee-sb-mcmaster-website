@@ -2,14 +2,10 @@ import {
   Box,
   Button,
   Container,
-  Flex,
   Heading,
-  HStack,
   VStack,
   Text,
   Image,
-  AspectRatio,
-  Badge,
   SimpleGrid,
   GridItem,
   Stack,
@@ -17,21 +13,17 @@ import {
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link, useHistory } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Pagination, Navigation } from 'swiper/core';
-
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
-import './homepage.scss';
 import EventSwiper from 'app/components/EventSwiper';
 import { RiCalendarEventLine } from 'react-icons/ri';
 import { MotionBox } from 'app/components/MotionComponents';
 import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
-import { Logo, EMBSLogo, PESLogo, CSLogo } from 'assets/logos/logos';
-import { teamData } from '../About Us/schema/teamData';
+import { teamData } from 'data/teamData';
 import { responsiveSpacing } from 'styles/chakraTheme';
+import HeaderBg from 'assets/bg/header-bg.png';
 
 export function HomePage() {
   const history = useHistory();
@@ -60,7 +52,9 @@ export function HomePage() {
           px={8}
           pb={16}
           spacing={responsiveSpacing}
-          bg="brand.primary"
+          bgImage={HeaderBg}
+          bgSize="cover"
+          bgPos="center"
         >
           <MotionBox
             animate={{ opacity: 1, scale: 1 }}
@@ -75,7 +69,7 @@ export function HomePage() {
               IEEE McMaster Student Branch
             </Heading>
           </MotionBox>
-          <Box position="absolute">
+          {/* <Box position="absolute">
             <Heading
               lineHeight="0.8"
               opacity={0.3}
@@ -91,18 +85,16 @@ export function HomePage() {
               IEEE McMaster <br />
               Student Branch
             </Heading>
-          </Box>
+          </Box> */}
         </VStack>
         <Container>
           <SimpleGrid
             className="rounded"
             justifyItems="center"
-            // py={responsiveSpacing}
             p={responsiveSpacing}
             gap={responsiveSpacing}
-            bg="whiteAlpha.900"
-            backdropFilter="blur(10px)"
             boxShadow="xl"
+            bg="white"
             mt={{ base: '-15vw', lg: '-15vh' }}
             mb={responsiveSpacing}
             columns={{ base: 1, md: 4 }}
@@ -140,9 +132,9 @@ export function HomePage() {
               <GridItem colSpan={1}>
                 <VStack spacing={responsiveSpacing} alignItems="flex-start">
                   <Box>
-                    <Heading size="2xl">Upcoming Events & Workshops</Heading>
+                    <Heading>Upcoming Events & Workshops</Heading>
                   </Box>
-                  <Text fontSize="lg">
+                  <Text>
                     Check out a preview of events happening soon. Learn a new
                     skill, meet new people, or just have fun!
                   </Text>
@@ -156,7 +148,7 @@ export function HomePage() {
                     to={'/events'}
                     className="float-up"
                   >
-                    View All Events & Workshops -&gt;
+                    View All -&gt;
                   </Button>
                 </VStack>
               </GridItem>

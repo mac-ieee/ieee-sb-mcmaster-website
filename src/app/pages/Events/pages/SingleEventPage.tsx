@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { calendarId, gAPIKey } from 'app/_data/data';
+import { calendarId, gAPIKey } from 'app/data/data';
 import {
   Box,
   VStack,

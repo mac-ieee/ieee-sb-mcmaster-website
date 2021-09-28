@@ -1,4 +1,4 @@
-import { gAPIKey, calendarId } from 'app/_data/data';
+import { gAPIKey, calendarId } from 'app/data/data';
 import axios from 'axios';
 
 const URIs = {

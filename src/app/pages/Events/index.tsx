@@ -13,7 +13,7 @@ import axios from 'axios';
 import EventBox from './components/EventBox';
 import { Helmet } from 'react-helmet-async';
 import SingleEventPage from './pages/SingleEventPage';
-import { calendarId, gAPIKey } from 'app/_data/data';
+import { calendarId, gAPIKey } from 'app/data/data';
 import EventsGrid from '../HomePage/components/EventsGrid';
 import Calendar from './components/Calendar';
 import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
@@ -42,18 +42,6 @@ const Events = (props: Props) => {
         <VStack py={8} w="100%" textAlign="center">
           <Container>
             <Route exact path={path}>
-              {/* <VStack spacing={8} w="100%">
-                <Heading size="2xl">Events</Heading>
-
-                <Heading size="md">Upcoming</Heading>
-                <EventsGrid items={9} />
-                {upcomingEvts.map(evt => {
-                  return <EventBox key={evt.id} evt={evt} />;
-                })}
-                <Heading size="md">Calendar</Heading>
-                <Calendar />
-                
-              </VStack> */}
               <VStack spacing={8} w="100%" alignItems="flex-start">
                 <Heading size="2xl">Events</Heading>
                 <SimpleGrid

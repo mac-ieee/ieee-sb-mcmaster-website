@@ -42,7 +42,6 @@ export function App() {
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />
-      {/* <GlobalStyle /> */}
     </BrowserRouter>
   );
 }

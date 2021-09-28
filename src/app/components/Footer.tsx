@@ -15,7 +15,7 @@ import {
   Link,
   Wrap,
 } from '@chakra-ui/react';
-import { contactInfo, socialInfo } from 'app/_data/data';
+import { contactInfo, socialInfo } from 'app/data/data';
 import React from 'react';
 import { Logo } from 'assets/logos/logos';
 import {

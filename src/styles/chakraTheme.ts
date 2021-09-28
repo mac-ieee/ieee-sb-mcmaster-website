@@ -25,19 +25,8 @@ const theme = extendTheme(
       },
     },
     components: {
-      Heading: {
-        baseStyle: props => ({
-          color: mode('black', 'white')(props),
-        }),
-      },
-      Drawer: {
-        // setup light/dark mode component defaults
-        baseStyle: props => ({
-          dialog: {
-            bg: mode('gray.100', '#141214')(props),
-          },
-        }),
-      },
+      // setup light/dark mode component defaults
+
       Modal: {
         // setup light/dark mode component defaults
         baseStyle: props => ({
@@ -52,11 +41,17 @@ const theme = extendTheme(
       },
       Text: {
         baseStyle: props => ({
-          fontSize: 'sm',
+          fontSize: { base: 'sm', md: 'md' },
           color: mode('blackAlpha.700', 'whiteAlpha.800')(props),
         }),
         defaultProps: props => ({
           color: mode('blackAlpha.700', 'whiteAlpha.800')(props),
+        }),
+      },
+      Heading: {
+        baseStyle: props => ({
+          fontSize: { base: 'lg', md: '2xl' },
+          color: mode('black', 'white')(props),
         }),
       },
       FormLabel: {
