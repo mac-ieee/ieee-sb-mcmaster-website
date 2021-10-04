@@ -25,6 +25,7 @@ const EventSwiper = (props: Props) => {
     >
       {props.evts.length ? (
         <Swiper
+          style={{ width: '100%', height: '100%' }}
           className="event-swiper"
           pagination
           autoplay={{

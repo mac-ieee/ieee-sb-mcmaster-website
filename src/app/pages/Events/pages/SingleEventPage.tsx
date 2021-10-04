@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { calendarId, gAPIKey } from 'app/data/data';
+import { Wrap, WrapItem } from '@chakra-ui/react';
 import {
   Box,
   VStack,
@@ -11,11 +12,13 @@ import {
   Button,
   Stack,
   Link,
+  ButtonGroup,
   Badge,
 } from '@chakra-ui/react';
 import _ from 'lodash';
 import { formatDateObj } from 'utils/fns';
 import { RiGoogleFill } from 'react-icons/ri';
+import { responsiveSpacing } from 'styles/chakraTheme';
 
 const linkMapping = {
   SIGNUP: 'Sign Up',
@@ -35,7 +38,6 @@ const parseEventDesc = (desc: string) => {
     keys[newKeys[0]] = newKeys[1];
   });
 
-  console.log(keys, desc);
   return { keys, desc };
 };
 
@@ -56,11 +58,14 @@ const SingleEventPage = (props: Props) => {
   const renderKeys = React.useCallback(() => {
     return Object.keys(descriptionData.keys).map(key => {
       const linkKey = descriptionData.keys[key];
-      console.log(linkKey);
       return (
-        <Button variant="secondary" size="md">
-          {key}
-        </Button>
+        <WrapItem>
+          <Link isExternal href={linkKey}>
+            <Button variant="secondary" size="md">
+              {key}
+            </Button>
+          </Link>
+        </WrapItem>
       );
     });
   }, [descriptionData.keys]);
@@ -77,7 +82,7 @@ const SingleEventPage = (props: Props) => {
   return (
     <VStack
       className="rounded-children"
-      spacing={0}
+      spacing={responsiveSpacing}
       w="100%"
       alignItems="flex-start"
       textAlign="left"
@@ -85,7 +90,7 @@ const SingleEventPage = (props: Props) => {
       <VStack
         alignItems="flex-start"
         spacing={8}
-        p={16}
+        p={responsiveSpacing}
         bg="brand.primary"
         w="100%"
       >
@@ -104,22 +109,32 @@ const SingleEventPage = (props: Props) => {
               <span style={{ color: 'white' }}>{formatDateObj(evt.end)}</span>
             </Text>
           </div>
-
-          <Button
-            size="md"
-            variant="secondary"
-            onClick={() => window.open(evt.htmlLink)}
-            leftIcon={<RiGoogleFill />}
-          >
-            Google Calendar Link
-          </Button>
         </DarkMode>
       </VStack>
 
-      <Stack spacing={{ base: 4 }} bg="blackAlpha.50" p={8} w="100%">
-        <Heading fontSize="xl">Links</Heading>
-        <Text>{renderKeys()}</Text>
-      </Stack>
+      {renderKeys().length && (
+        <Stack
+          spacing={{ base: 4 }}
+          bg="blackAlpha.50"
+          p={responsiveSpacing}
+          w="100%"
+        >
+          <Heading fontSize="xl">Links</Heading>
+          <Wrap>
+            {renderKeys()}
+            <WrapItem>
+              <Button
+                size="md"
+                variant="outline"
+                onClick={() => window.open(evt.htmlLink)}
+                leftIcon={<RiGoogleFill />}
+              >
+                Google Calendar Link
+              </Button>
+            </WrapItem>
+          </Wrap>
+        </Stack>
+      )}
 
       {Object.keys(evtDetails).map(key => {
         return (
