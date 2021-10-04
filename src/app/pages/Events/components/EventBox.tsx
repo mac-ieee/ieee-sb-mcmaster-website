@@ -27,7 +27,6 @@ type Props = {
 const EventBox = (props: Props) => {
   const { path, url } = useRouteMatch();
   const { evt, h } = props;
-  console.log(evt);
 
   const formatDate = obj => {
     if (obj.hasOwnProperty('dateTime')) {

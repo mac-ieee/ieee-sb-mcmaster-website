@@ -127,10 +127,12 @@ const Footer = (props: Props) => {
           alignItems="center"
         >
           <Text>
-            ©2021 IEEE McMaster Student Branch. Developed by{' '}
+            ©2021 IEEE McMaster Student Branch. 
+            
+            {/* Developed by{' '}
             <span>
               <Link href="https://felixha00.github.io">Felix Ha</Link>
-            </span>
+            </span> */}
           </Text>
           <Spacer />
         </Container>
