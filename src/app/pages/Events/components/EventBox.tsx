@@ -4,28 +4,18 @@ import {
   VStack,
   Text,
   Heading,
-  Badge,
-  Wrap,
   HStack,
   DarkMode,
   Flex,
 } from '@chakra-ui/react';
 import { Link, useRouteMatch } from 'react-router-dom';
 import moment from 'moment';
-import _ from 'lodash';
 
 type Props = {
   evt?: any;
   h?: string;
 };
-
-// type PlaceholderProps = { placeholder?: false } | { placeholder: true };
-
-// type Props = PlaceholderProps & DataProps;
-
-//const colors = ['blue', 'cyan', 'green', 'orange', 'teal', 'purple', 'pink'];
 const EventBox = (props: Props) => {
-  const { path, url } = useRouteMatch();
   const { evt, h } = props;
 
   const formatDate = obj => {
@@ -60,13 +50,12 @@ const EventBox = (props: Props) => {
         w="100%"
         h={h || 'auto'}
         className="rounded hover-line"
-        bg={`brand.primary`}
+        bg={`black`}
         display="flex"
         flexDir="column"
       >
         <VStack spacing={4} alignItems="flex-start" p={8}>
           <HStack spacing={2}>
-            {/* <Badge>🔴 LIVE</Badge> */}
             <Heading size="md">{evt.summary}</Heading>
             {/* <Badge bg="blackAlpha.200">{evt.organizer.displayName}</Badge> */}
           </HStack>
@@ -78,8 +67,8 @@ const EventBox = (props: Props) => {
           p={8}
           py={4}
         >
-          <Text>{formatDate(evt.start)}</Text>
-          {/* <Text>Ends:{formatDate(evt.end)}</Text> */}
+          {/* <Badge color="whiteAlpha.900">🔴 LIVE</Badge> */}
+          <Text fontSize="xs">{formatDate(evt.start)}</Text>
         </HStack>
       </Box>
     </DarkMode>

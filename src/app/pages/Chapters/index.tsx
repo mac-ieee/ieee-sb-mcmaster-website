@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Heading, Box, Stack } from '@chakra-ui/react';
-import { useRouteMatch, useParams, Switch, Route } from 'react-router';
+import { useRouteMatch, useParams } from 'react-router';
 import { teamData } from 'data/teamData';
 import ChapterHeader from 'app/components/ChapterHeader';
 import Marquee from 'react-fast-marquee';
@@ -16,7 +16,6 @@ interface Props {}
 const Chapters = () => {
   const { chapterId } = useParams<any>();
   const { name, logo } = teamData[chapterId];
-  const { path, url } = useRouteMatch();
 
   const renderChapter = React.useCallback(() => {
     switch (chapterId) {
@@ -62,6 +61,18 @@ const Chapters = () => {
       <Container py={{ base: 4, lg: 8 }}>
         <Stack spacing={responsiveSpacing}>
           <ChapterHeader id={chapterId} />
+          {teamData[chapterId].headline && (
+            <Box p={responsiveSpacing}>
+              <Heading
+                fontSize={{ base: 'lg', md: '4xl' }}
+                fontWeight="300"
+                textAlign="center"
+              >
+                {teamData[chapterId].headline}
+              </Heading>
+            </Box>
+          )}
+
           {renderChapter()}
         </Stack>
       </Container>

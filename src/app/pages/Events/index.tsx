@@ -2,23 +2,19 @@ import {
   Box,
   Container,
   Heading,
-  Grid,
   VStack,
   GridItem,
   SimpleGrid,
 } from '@chakra-ui/react';
 import { Switch, useRouteMatch, useLocation, Route } from 'react-router-dom';
 import React, { useState } from 'react';
-import axios from 'axios';
 import EventBox from './components/EventBox';
 import { Helmet } from 'react-helmet-async';
 import SingleEventPage from './pages/SingleEventPage';
-import { calendarId, gAPIKey } from 'app/data/data';
 import EventsGrid from '../HomePage/components/EventsGrid';
 import Calendar from './components/Calendar';
 import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
 
-// const axios = require('axios').default;
 interface Props {}
 
 const Events = (props: Props) => {

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { calendarId, gAPIKey } from 'app/data/data';
@@ -12,7 +12,6 @@ import {
   Button,
   Stack,
   Link,
-  ButtonGroup,
   Badge,
 } from '@chakra-ui/react';
 import _ from 'lodash';
@@ -20,9 +19,6 @@ import { formatDateObj } from 'utils/fns';
 import { RiGoogleFill } from 'react-icons/ri';
 import { responsiveSpacing } from 'styles/chakraTheme';
 
-const linkMapping = {
-  SIGNUP: 'Sign Up',
-};
 interface Props {}
 
 const parseEventDesc = (desc: string) => {
@@ -30,11 +26,9 @@ const parseEventDesc = (desc: string) => {
 
   let keys = {};
 
-  desc.match(regExp).map(key => {
+  desc.match(regExp).forEach(key => {
     desc = desc.replace(key, '');
     let newKeys = key.replace(/[{}]/g, '').split('=');
-    // let newObj = { [newKeys[0]]: newKeys[1] };
-    // keys.push({ [newKeys[0]]: newKeys[1] });
     keys[newKeys[0]] = newKeys[1];
   });
 
@@ -69,6 +63,7 @@ const SingleEventPage = (props: Props) => {
       );
     });
   }, [descriptionData.keys]);
+
   React.useEffect(() => {
     axios
       .get(
@@ -77,7 +72,8 @@ const SingleEventPage = (props: Props) => {
       .then(res => {
         setEvt(res.data);
       });
-  }, []);
+  }, [eventId]);
+
   const evtDetails = _.pick(evt, ['location']);
   return (
     <VStack

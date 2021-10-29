@@ -47,7 +47,6 @@ const Footer = (props: Props) => {
           return (
             <IconButton
               icon={icon}
-              //variant="outline"
               variant="outline"
               aria-label={key}
               as={Link}
@@ -94,46 +93,15 @@ const Footer = (props: Props) => {
           </SimpleGrid>
         </Container>
       </VStack>
-      {/* <Flex>
-        <Container py={4}>
-          <SimpleGrid
-            opacity="0.5"
-            alignItems="center"
-            columns={{ base: 1, sm: 2, md: 2 }}
-            spacing={8}
-          >
-            <Image
-              style={{ filter: 'grayscale(100%) contrast(300%)' }}
-              w="250px"
-              src={EceImage}
-            />
-            <Image
-              style={{ filter: 'grayscale(100%) contrast(300%)' }}
-              w="250px"
-              src={IeeeImg}
-            />
-          </SimpleGrid>
-        </Container>
-      </Flex> */}
       <Flex w="100%" borderTop="1px solid" borderColor="blackAlpha.300">
         <Container
           as={Flex}
-          // as={VStack}
           py={4}
-          // direction={{ base: 'column', md: 'row' }}
           flexDir="row"
           spacing={4}
-          // justify={{ md: 'space-between' }}
           alignItems="center"
         >
-          <Text>
-            ©2021 IEEE McMaster Student Branch. 
-            
-            {/* Developed by{' '}
-            <span>
-              <Link href="https://felixha00.github.io">Felix Ha</Link>
-            </span> */}
-          </Text>
+          <Text>©2021 IEEE McMaster Student Branch.</Text>
           <Spacer />
         </Container>
       </Flex>

@@ -129,6 +129,9 @@ export function HomePage() {
         <Box bg="whiteAlpha.900" w="100%" py={responsiveSpacing}>
           <Container>
             <SimpleGrid columns={{ base: 1, md: 3 }} gap={responsiveSpacing}>
+              <GridItem h="100%" colSpan={2}>
+                <EventSwiper evts={upcomingEvts} />
+              </GridItem>
               <GridItem colSpan={1}>
                 <VStack spacing={responsiveSpacing} alignItems="flex-start">
                   <Box>
@@ -151,9 +154,6 @@ export function HomePage() {
                     View All -&gt;
                   </Button>
                 </VStack>
-              </GridItem>
-              <GridItem h="100%" colSpan={2}>
-                <EventSwiper evts={upcomingEvts} />
               </GridItem>
             </SimpleGrid>
           </Container>
