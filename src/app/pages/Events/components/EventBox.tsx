@@ -7,9 +7,15 @@ import {
   HStack,
   DarkMode,
   Flex,
+  Stack,
+  AspectRatio,
 } from '@chakra-ui/react';
+import LazyLoad from 'react-lazyload';
 import { Link, useRouteMatch } from 'react-router-dom';
 import moment from 'moment';
+import { responsiveSpacing } from 'styles/chakraTheme';
+
+const driveDirectURI = `https://drive.google.com/uc?export=view&id=`;
 
 type Props = {
   evt?: any;
@@ -17,7 +23,6 @@ type Props = {
 };
 const EventBox = (props: Props) => {
   const { evt, h } = props;
-
   const formatDate = obj => {
     if (obj.hasOwnProperty('dateTime')) {
       return moment(obj.dateTime).format('MMMM Do YYYY @ h:mm:ss a');
@@ -44,33 +49,46 @@ const EventBox = (props: Props) => {
   }
   return (
     <DarkMode>
-      <Box
-        as={Link}
-        to={`events/${evt.id}`}
-        w="100%"
-        h={h || 'auto'}
-        className="rounded hover-line"
-        bg={`black`}
-        display="flex"
-        flexDir="column"
-      >
-        <VStack spacing={4} alignItems="flex-start" p={8}>
-          <HStack spacing={2}>
-            <Heading size="md">{evt.summary}</Heading>
-            {/* <Badge bg="blackAlpha.200">{evt.organizer.displayName}</Badge> */}
-          </HStack>
-        </VStack>
-        <Flex grow={1} />
-        <HStack
-          w="100%"
-          bgGradient="linear(to-r, whiteAlpha.200,transparent)"
-          p={8}
-          py={4}
+      <LazyLoad>
+        <Box
+          className="rounded"
+          bgSize="cover"
+          bgPos="center"
+          _hover={{ backdropFilter: 'grayscale(30%)' }}
+          bgImage={
+            evt.attachments ? driveDirectURI + evt.attachments[0].fileId : ''
+          }
+          bgColor="black"
         >
-          {/* <Badge color="whiteAlpha.900">🔴 LIVE</Badge> */}
-          <Text fontSize="xs">{formatDate(evt.start)}</Text>
-        </HStack>
-      </Box>
+          <AspectRatio ratio={0.773}>
+            <Box
+              as={Link}
+              to={`events/${evt.id}`}
+              w="100%"
+              h={h || 'auto'}
+              className="rounded hover-line"
+              display="flex"
+              flexDir="column"
+            >
+              <Flex grow={1} />
+              <Stack
+                w="100%"
+                h="50%"
+                bgGradient="linear(to-t, blackAlpha.900,rgba(0,0,0,0))"
+                p={responsiveSpacing}
+                justifyContent="flex-end"
+                textAlign="left"
+                borderBottomRadius="10px"
+              >
+                <HStack spacing={2}>
+                  <Heading size="md">{evt.summary}</Heading>
+                </HStack>
+                <Text fontSize="xs">{formatDate(evt.start)}</Text>
+              </Stack>
+            </Box>
+          </AspectRatio>
+        </Box>
+      </LazyLoad>
     </DarkMode>
   );
 };

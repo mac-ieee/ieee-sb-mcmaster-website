@@ -35,26 +35,9 @@ const swiperNavStyle = {
   _hover: {
     color: 'white',
     bg: 'black',
-    // transition: 'font-size 1s ease-in-out',
-    // fontSize: '22px',
   },
 };
-// const EventNavBtn = ({
-//   swiper,
-//   icon,
-// }: {
-//   swiper: SwiperCore;
-//   icon: React.ReactElement<any, string>;
-// }) => {
-//   <IconButton
-//     {...swiperNavStyle}
-//     // visibility={swiper && swiper.isBeginning ? 'hidden' : 'visible'}
 
-//     onClick={() => swiper.slidePrev()}
-//     icon={icon}
-//     aria-label="swipeLeftButton"
-//   />;
-// };
 const LeftButton = ({ swiper }: { swiper: SwiperCore }) => {
   return (
     <IconButton
@@ -78,7 +61,8 @@ const RightButton = ({ swiper }: { swiper: SwiperCore }) => {
     />
   );
 };
-const EventSwiper = (props: Props) => {
+
+const CustomSwiper = (props: Props) => {
   const [my_swiper, set_my_swiper] = React.useState<SwiperCore>();
   return (
     <VStack
@@ -94,7 +78,6 @@ const EventSwiper = (props: Props) => {
           <Swiper
             centeredSlides
             onBeforeInit={ev => set_my_swiper(ev)}
-            onSlideChange={() => console.log('changed')}
             // onReachEnd={ev => set_my_swiper(ev)}
             // onReachBeginning={ev => set_my_swiper(ev)}
             style={{ width: '100%', height: '100%', margin: '0px -20px' }}
@@ -103,15 +86,8 @@ const EventSwiper = (props: Props) => {
               delay: 10000,
               disableOnInteraction: true,
             }}
-            breakpoints={{
-              499: {
-                slidesPerView: 1,
-              },
-              999: {
-                slidesPerView: 2,
-              },
-            }}
             slidesPerView={2}
+            // slidesPerView={props.evts.length > 1 ? 2 : 1}
             spaceBetween={15}
           >
             {props.evts.map(evt => {
@@ -131,4 +107,4 @@ const EventSwiper = (props: Props) => {
   );
 };
 
-export default EventSwiper;
+export { CustomSwiper, CustomSwiper as default };

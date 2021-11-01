@@ -98,6 +98,13 @@ export default function MainNavbar() {
             </Flex>
           </Flex>
           <Flex alignItems="center" flex={{ base: 1 }} justify="start">
+            <Image
+              src={Logo}
+              display={{ base: 'none', md: 'block' }}
+              w="30px"
+              h="30px"
+              mr={3}
+            />
             <Heading
               as={Link}
               to="/"
@@ -105,7 +112,7 @@ export default function MainNavbar() {
               textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
               // color={useColorModeValue('gray.800', 'white')}
               display={{ base: 'none', md: 'block' }}
-              color="brand.primary"
+              color="ieee.primary"
             >
               IEEE{' '}
               {showScrollStyle

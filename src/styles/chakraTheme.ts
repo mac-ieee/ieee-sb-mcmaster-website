@@ -23,10 +23,22 @@ const theme = extendTheme(
         secondary: '#FBB93E', // yellow
         satSecondary: '#FCA400',
       },
+      ieee: {
+        primary: '#124982',
+      },
     },
     components: {
-      // setup light/dark mode component defaults
+      Select: {
+        baseStyle: {
+          field: {
+            backgroundColor: 'white',
 
+            _hover: {
+              boxShadow: 'xl',
+            },
+          },
+        },
+      },
       Modal: {
         // setup light/dark mode component defaults
         baseStyle: props => ({
@@ -124,6 +136,9 @@ const theme = extendTheme(
         body: {
           bg: mode('#F5F5F7', '#141214')(props),
           color: mode('blackAlpha.700', 'whiteAlpha.900')(props),
+        },
+        select: {
+          backgroundColor: 'white',
         },
         // p: {
         //   color: mode('blackAlpha.700', 'whiteAlpha.900')(props),
