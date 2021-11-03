@@ -21,7 +21,11 @@ import { capitalize, formatDateObj } from 'utils/fns';
 import { RiGoogleFill } from 'react-icons/ri';
 import { responsiveSpacing } from 'styles/chakraTheme';
 import { driveDirectURI } from 'utils/g-calendar-api/gCalendarAPI';
-
+import ReactHtmlParser, {
+  processNodes,
+  convertNodeToElement,
+  htmlparser2,
+} from 'react-html-parser';
 interface Props {}
 
 const parseEventDesc = (desc: string) => {
@@ -31,8 +35,16 @@ const parseEventDesc = (desc: string) => {
   if (desc.match(regExp)) {
     desc.match(regExp).forEach(key => {
       desc = desc.replace(key, '');
-      let newKeys = key.replace(/[{}]/g, '').split('=');
-      keys[newKeys[0]] = newKeys[1];
+
+      // let newKeys = key.replace(/[{}]/g, '').split('=');
+      let newKeys = key.replace(/[{}]/g, '');
+      console.log(newKeys);
+
+      var i = newKeys.indexOf('=');
+
+      var splits = [newKeys.slice(0, i), newKeys.slice(i + 1)];
+
+      keys[splits[0]] = splits[1];
     });
   }
 
@@ -43,8 +55,8 @@ const SingleEventPage = (props: Props) => {
   const { eventId } = useParams<any>();
   const [evt, setEvt] = React.useState<any>({});
   const [descriptionData, setDescriptionData] = React.useState({
-    keys: {},
     desc: '',
+    keys: {},
   });
 
   React.useEffect(() => {
@@ -56,15 +68,20 @@ const SingleEventPage = (props: Props) => {
   const renderKeys = React.useCallback(() => {
     return Object.keys(descriptionData.keys).map(key => {
       const linkKey = descriptionData.keys[key];
-      return (
-        <WrapItem>
-          <Link isExternal href={linkKey}>
-            <Button variant="secondary" size="md">
-              {key}
-            </Button>
-          </Link>
-        </WrapItem>
-      );
+      const parsedLink = ReactHtmlParser(linkKey);
+      try {
+        return (
+          <WrapItem>
+            <Link isExternal href={parsedLink[0].props.href}>
+              <Button variant="secondary" size="md">
+                {key}
+              </Button>
+            </Link>
+          </WrapItem>
+        );
+      } catch (e) {
+        return null;
+      }
     });
   }, [descriptionData.keys]);
 
@@ -168,7 +185,7 @@ const SingleEventPage = (props: Props) => {
         )}
         <Stack>
           <Heading fontSize="xl">Event Description</Heading>
-          <Text>{descriptionData.desc}</Text>
+          <Box>{ReactHtmlParser(descriptionData.desc)}</Box>
         </Stack>
       </SimpleGrid>
     </VStack>

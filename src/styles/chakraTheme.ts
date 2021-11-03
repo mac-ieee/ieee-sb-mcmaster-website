@@ -149,7 +149,7 @@ const theme = extendTheme(
       global: props => ({
         body: {
           bg: mode('#F5F5F7', '#141214')(props),
-          color: mode('blackAlpha.700', 'whiteAlpha.900')(props),
+          color: mode('blackAlpha.800', 'whiteAlpha.900')(props),
         },
         select: {
           backgroundColor: 'white',
