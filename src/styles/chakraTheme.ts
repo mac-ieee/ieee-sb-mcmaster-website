@@ -37,6 +37,9 @@ const theme = extendTheme(
       ieee: {
         primary: '#124982',
       },
+      chapters: {
+        pes: '#FFBE2A',
+      },
     },
     components: {
       Select: {
