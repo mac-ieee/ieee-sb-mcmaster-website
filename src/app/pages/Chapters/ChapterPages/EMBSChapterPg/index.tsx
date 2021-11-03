@@ -1,4 +1,5 @@
 import React from 'react';
+import './embs-chapter-pg.scss';
 
 interface Props {}
 

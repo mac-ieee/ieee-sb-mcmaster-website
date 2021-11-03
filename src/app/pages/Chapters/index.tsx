@@ -4,7 +4,7 @@ import { useRouteMatch, useParams } from 'react-router';
 import { teamData } from 'data/teamData';
 import ChapterHeader from 'app/components/ChapterHeader';
 import Marquee from 'react-fast-marquee';
-import MainBranchChapterPg from './ChapterPages/MainBranchChapterPg';
+import MainBranchPg from './ChapterPages/MainBranchPg';
 import { responsiveSpacing } from 'styles/chakraTheme';
 import { Helmet } from 'react-helmet-async';
 import ComputerChapterPg from './ChapterPages/ComputerChapterPg';
@@ -15,12 +15,12 @@ interface Props {}
 
 const Chapters = () => {
   const { chapterId } = useParams<any>();
-  const { name, logo } = teamData[chapterId];
+  const { name, logo, headline } = teamData[chapterId];
 
   const renderChapter = React.useCallback(() => {
     switch (chapterId) {
       case 'main-branch':
-        return <MainBranchChapterPg />;
+        return <MainBranchPg />;
       case 'computer':
         return <ComputerChapterPg />;
       case 'power-and-energy-society':
@@ -35,7 +35,7 @@ const Chapters = () => {
     <>
       <Helmet>
         <title>{name}</title>
-        <meta name="description" content="" />
+        <meta name="description" content={headline} />
       </Helmet>
       <Box className="navbar-offset" />
       <Box

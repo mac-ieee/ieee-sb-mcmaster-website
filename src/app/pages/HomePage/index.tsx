@@ -24,6 +24,7 @@ import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
 import { teamData } from 'data/teamData';
 import { responsiveSpacing } from 'styles/chakraTheme';
 import HeaderBg from 'assets/bg/header-bg.png';
+import banner from 'assets/bg/banner.jpg';
 
 export function HomePage() {
   const history = useHistory();
@@ -40,20 +41,20 @@ export function HomePage() {
           content="Home Page of the IEEE McMaster Student Branch"
         />
       </Helmet>
-      <VStack bg="white" className="navbar-offset" spacing={0}>
+      <VStack className="navbar-offset" spacing={0}>
         <VStack
           className="homepage-header-bg"
           align="center"
           justify="center"
-          h="50vh"
+          h="40vh"
           w="100%"
           textAlign="center"
           color="white"
           px={8}
-          pb={16}
+          pb={8}
           spacing={responsiveSpacing}
-          bgImage={HeaderBg}
-          bgColor="ieee.primary"
+          // bgImage={banner}
+          bgColor="brand.primary"
           bgSize="cover"
           bgPos="center"
         >
@@ -63,10 +64,10 @@ export function HomePage() {
             transition={{ duration: '0.5' }}
             zIndex="1"
           >
-            <Heading size="xl" color="white" fontWeight={500}>
+            <Heading size="lg" color="white" fontWeight={400}>
               Welcome to the
             </Heading>
-            <Heading color="brand.secondary" size="3xl" fontWeight={700}>
+            <Heading color="brand.secondary" size="2xl" fontWeight={600}>
               IEEE McMaster Student Branch
             </Heading>
           </MotionBox>
@@ -88,46 +89,51 @@ export function HomePage() {
             </Heading>
           </Box> */}
         </VStack>
-        <Container>
-          <SimpleGrid
-            className="rounded"
-            justifyItems="center"
-            p={responsiveSpacing}
-            gap={responsiveSpacing}
-            boxShadow="xl"
-            bg="white"
-            mt={{ base: '-10vw', lg: '-10vh' }}
-            mb={responsiveSpacing}
-            columns={{ base: 1, md: 4 }}
-          >
-            {Object.keys(teamData).map(key => {
-              return (
-                <Stack
-                  className="rounded hover-line"
-                  p={responsiveSpacing}
-                  w="100%"
-                  bg="blackAlpha.50"
-                  direction={{ base: 'row', md: 'column' }}
-                  alignItems="center"
-                  spacing={8}
-                  onClick={() => history.push(`/chapters/${key}`)}
-                  cursor="pointer"
-                >
-                  <Image
-                    w={{ base: '50px', md: '150px' }}
-                    src={teamData[key].logo}
-                  />
+        <Box w="100%">
+          <Container>
+            <SimpleGrid
+              className="rounded"
+              justifyItems="center"
+              p={responsiveSpacing}
+              gap={responsiveSpacing}
+              boxShadow="xl"
+              bg="white"
+              mt={{ base: '-10vw', lg: '-5vh' }}
+              mb={responsiveSpacing}
+              columns={{ base: 1, md: 4 }}
+            >
+              {Object.keys(teamData).map(key => {
+                return (
+                  <Stack
+                    className="rounded hover-line"
+                    p={responsiveSpacing}
+                    w="100%"
+                    bg="blackAlpha.50"
+                    direction={{ base: 'row', md: 'column' }}
+                    alignItems="center"
+                    spacing={8}
+                    onClick={() => history.push(`/chapters/${key}`)}
+                    cursor="pointer"
+                  >
+                    <Image
+                      w={{ base: '50px', md: '150px' }}
+                      src={teamData[key].logo}
+                    />
 
-                  <Heading textAlign={{ base: 'left', md: 'center' }} size="md">
-                    {teamData[key].name}
-                  </Heading>
-                </Stack>
-              );
-            })}
-          </SimpleGrid>
-        </Container>
+                    <Heading
+                      textAlign={{ base: 'left', md: 'center' }}
+                      size="md"
+                    >
+                      {teamData[key].name}
+                    </Heading>
+                  </Stack>
+                );
+              })}
+            </SimpleGrid>
+          </Container>
+        </Box>
 
-        <Box bg="whiteAlpha.900" w="100%" py={responsiveSpacing}>
+        <Box w="100%" py={16}>
           <Container>
             <SimpleGrid columns={{ base: 1, md: 3 }} gap={responsiveSpacing}>
               <GridItem colSpan={1}>
@@ -153,7 +159,7 @@ export function HomePage() {
                   </Button>
                 </VStack>
               </GridItem>
-              <GridItem h="100%" colSpan={2}>
+              <GridItem h="100%" colSpan={2} position="relative">
                 <EventSwiper evts={upcomingEvts} />
               </GridItem>
             </SimpleGrid>

@@ -39,7 +39,7 @@ const Calendar = (props: Props) => {
   );
 
   useEffect(() => {
-    async function setMonthlyEvts() {
+    async function fn() {
       let monthlyEvts = getEventsThisMonth().then(evts => {
         setEvents(evts);
       });
@@ -48,7 +48,8 @@ const Calendar = (props: Props) => {
       // response = await response.json()
       // dataSet(response)
     }
-    setMonthlyEvts();
+
+    fn();
   }, []);
 
   const formattedEvents = React.useMemo(() => {}, [events]);
@@ -59,11 +60,6 @@ const Calendar = (props: Props) => {
     onOpen();
   };
   return (
-    // <DatePicker
-    //   inline
-    //   selected={startDate}
-    //   onChange={date => setStartDate(date)}
-    // />
     <>
       <SimpleGrid columns={{ base: 1 }} w="100%">
         <FullCalendar

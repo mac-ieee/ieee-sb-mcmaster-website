@@ -48,7 +48,6 @@ const PastEventsPage = () => {
         <Select
           bg="white"
           w={{ base: '100%', md: '150px' }}
-          placeholder="Select year"
           value={yearSelected}
           onChange={handleChange}
         >

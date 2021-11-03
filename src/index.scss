@@ -2,6 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1 !important;
+  font-family: 'Manrope';
+}
+
 .smooth {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   &:hover {
@@ -19,12 +29,16 @@
 }
 
 .rounded {
-  border-radius: 10px;
+  border-radius: 5px;
+}
+
+.bordered {
+  border: 1px solid rgb(0, 0, 0, 0.1);
 }
 
 .rounded-children {
   div {
-    border-radius: 10px;
+    border-radius: 5px;
   }
 }
 

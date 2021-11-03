@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  VStack,
+  Stack,
   AspectRatio,
   Text,
   Heading,
@@ -12,14 +12,17 @@ import {
 } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Navigation, Autoplay } from 'swiper/core';
-
+import './event-swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import 'swiper/swiper.scss';
 import EventBox from 'app/pages/Events/components/EventBox';
 import { RiArrowLeftLine, RiArrowRightLine } from 'react-icons/ri';
+import { responsiveSpacing } from 'styles/chakraTheme';
+
 SwiperCore.use([Pagination, Autoplay, Navigation]);
+
 interface Props {
   evts: Array<any>;
 }
@@ -60,7 +63,7 @@ const LeftButton = ({ swiper }: { swiper: SwiperCore }) => {
     <IconButton
       {...swiperNavStyle}
       // visibility={swiper && swiper.isBeginning ? 'hidden' : 'visible'}
-
+      display={{ base: 'none', lg: 'flex' }}
       onClick={() => swiper.slidePrev()}
       icon={<RiArrowLeftLine />}
       aria-label="swipeLeftButton"
@@ -72,6 +75,7 @@ const RightButton = ({ swiper }: { swiper: SwiperCore }) => {
   return (
     <IconButton
       {...swiperNavStyle}
+      display={{ base: 'none', lg: 'flex' }}
       onClick={() => swiper.slideNext()}
       icon={<RiArrowRightLine />}
       aria-label="swipeRightButton"
@@ -81,30 +85,36 @@ const RightButton = ({ swiper }: { swiper: SwiperCore }) => {
 const EventSwiper = (props: Props) => {
   const [my_swiper, set_my_swiper] = React.useState<SwiperCore>();
   return (
-    <VStack
+    <Stack
       className="rounded"
       height="100%"
       bg="transparent"
       textAlign="left"
-      spacing={{ base: 4, lg: 8 }}
+      spacing={responsiveSpacing}
     >
       {props.evts.length ? (
-        <Flex w="100%" h="100%" alignItems="center">
-          <LeftButton swiper={my_swiper} />
+        <Flex w="100%" h="100%" alignItems="center" position="relative">
+          {/* <Stack position="absolute" direction="row" left="-10px">
+            <LeftButton swiper={my_swiper} />
+            <RightButton swiper={my_swiper} />
+          </Stack> */}
+          <Box position="absolute" left="-20px">
+            <LeftButton swiper={my_swiper} />
+          </Box>
           <Swiper
             centeredSlides
             onBeforeInit={ev => set_my_swiper(ev)}
             onSlideChange={() => console.log('changed')}
             // onReachEnd={ev => set_my_swiper(ev)}
             // onReachBeginning={ev => set_my_swiper(ev)}
-            style={{ width: '100%', height: '100%', margin: '0px -20px' }}
+            style={{ width: '100%', height: '100%' }}
             className="event-swiper"
             autoplay={{
               delay: 10000,
               disableOnInteraction: true,
             }}
             breakpoints={{
-              499: {
+              0: {
                 slidesPerView: 1,
               },
               999: {
@@ -122,12 +132,14 @@ const EventSwiper = (props: Props) => {
               );
             })}
           </Swiper>
-          <RightButton swiper={my_swiper} />
+          <Box position="absolute" right="-20px">
+            <RightButton swiper={my_swiper} />
+          </Box>
         </Flex>
       ) : (
         <EventBox h="100%" />
       )}
-    </VStack>
+    </Stack>
   );
 };
 

@@ -23,6 +23,7 @@ import {
   RiInstagramFill,
   RiLinkedinFill,
 } from 'react-icons/ri';
+import { responsiveSpacing } from 'styles/chakraTheme';
 interface Props {}
 
 const Footer = (props: Props) => {
@@ -76,16 +77,16 @@ const Footer = (props: Props) => {
   };
   return (
     <VStack bg="blackAlpha.100" spacing={0}>
-      <VStack p={8} w="100%">
+      <VStack p={responsiveSpacing} w="100%">
         <Container py={4}>
           <SimpleGrid
             alignItems="center"
             columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
-            spacing={8}
+            spacing={responsiveSpacing}
             placeItems="center"
           >
-            <VStack alignItems="flex-start" spacing={4}>
-              <Image src={Logo} w="100px" filter="grayscale(100%)" />
+            <VStack alignItems="flex-start" spacing={responsiveSpacing}>
+              <Image src={Logo} w="50px" filter="grayscale(100%)" />
               <Heading size="md">IEEE McMaster Student Branch</Heading>
               {renderContactInfo()}
               {renderSocialInfo()}
@@ -101,7 +102,7 @@ const Footer = (props: Props) => {
           spacing={4}
           alignItems="center"
         >
-          <Text>©2021 IEEE McMaster Student Branch.</Text>
+          <Text fontSize="sm">©2021 IEEE McMaster Student Branch.</Text>
           <Spacer />
         </Container>
       </Flex>

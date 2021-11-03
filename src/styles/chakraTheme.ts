@@ -1,4 +1,9 @@
-import { extendTheme, ThemeConfig, withDefaultSize } from '@chakra-ui/react';
+import {
+  extendTheme,
+  ThemeConfig,
+  withDefaultSize,
+  withDefaultProps,
+} from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
 const config: ThemeConfig = {
@@ -7,10 +12,16 @@ const config: ThemeConfig = {
 };
 
 export const responsiveSpacing = {
-  lg: 8,
+  lg: 6,
   base: 4,
 };
 const theme = extendTheme(
+  withDefaultProps({
+    defaultProps: {
+      spacing: { lg: 8, base: 4 },
+    },
+    components: ['Stack', 'VStack', 'HStack'],
+  }),
   withDefaultSize({
     size: 'lg',
     components: ['Input', 'Button'],
@@ -140,9 +151,11 @@ const theme = extendTheme(
         select: {
           backgroundColor: 'white',
         },
-        // p: {
-        //   color: mode('blackAlpha.700', 'whiteAlpha.900')(props),
-        // },
+        h1: {
+          fontWeight: 900,
+          color: 'black',
+          fontSize: ['3xl', '4xl', '5xl', '5xl'],
+        },
       }),
     },
     config,
