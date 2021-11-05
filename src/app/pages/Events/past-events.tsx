@@ -31,7 +31,7 @@ const PastEventsPage = () => {
     const fn = async () => {
       const evts: Array<any> = await getEventsWithinYear(yearSelected);
       evts.reverse();
-      setEvts(evts);
+      setEvts(evts);  
     };
 
     fn();

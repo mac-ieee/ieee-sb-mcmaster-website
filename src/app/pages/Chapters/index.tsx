@@ -15,6 +15,7 @@ interface Props {}
 
 const Chapters = () => {
   const { chapterId } = useParams<any>();
+
   const { name, logo, headline } = teamData[chapterId];
 
   const renderChapter = React.useCallback(() => {
@@ -57,6 +58,7 @@ const Chapters = () => {
             );
           })}
         </Marquee>
+        
       </Box>
       <Container py={{ base: 4, lg: 8 }}>
         <Stack spacing={responsiveSpacing}>
