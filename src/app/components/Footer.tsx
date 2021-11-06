@@ -14,6 +14,7 @@ import {
   IconButton,
   Link,
   Wrap,
+  Center,
 } from '@chakra-ui/react';
 import { contactInfo, socialInfo } from 'app/data/data';
 import React from 'react';
@@ -22,6 +23,7 @@ import {
   RiFacebookFill,
   RiInstagramFill,
   RiLinkedinFill,
+  RiDiscordFill,
 } from 'react-icons/ri';
 import { responsiveSpacing } from 'styles/chakraTheme';
 interface Props {}
@@ -41,6 +43,9 @@ const Footer = (props: Props) => {
               break;
             case 'linkedin':
               icon = <RiLinkedinFill />;
+              break;
+            case 'discord':
+              icon = <RiDiscordFill />;
               break;
             default:
               break;
@@ -76,37 +81,44 @@ const Footer = (props: Props) => {
     );
   };
   return (
-    <VStack bg="blackAlpha.100" spacing={0}>
-      <VStack p={responsiveSpacing} w="100%">
-        <Container py={4}>
-          <SimpleGrid
+    <DarkMode>
+      <VStack bg="blackAlpha.900" spacing={0}>
+        <VStack p={responsiveSpacing} w="100%">
+          <Container py={4}>
+            <SimpleGrid
+              alignItems="center"
+              columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
+              spacing={responsiveSpacing}
+              placeItems="center"
+            >
+              <VStack alignItems="flex-start" spacing={responsiveSpacing}>
+                <Image
+                  src={Logo}
+                  w="50px"
+                  filter="grayscale(100%) brightness(2)"
+                />
+
+                <Heading size="md">IEEE McMaster Student Branch</Heading>
+                {renderContactInfo()}
+                {renderSocialInfo()}
+              </VStack>
+            </SimpleGrid>
+          </Container>
+        </VStack>
+        <Flex w="100%" borderTop="1px solid" borderColor="whiteAlpha.300">
+          <Container
+            as={Flex}
+            py={4}
+            flexDir="row"
+            spacing={4}
             alignItems="center"
-            columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
-            spacing={responsiveSpacing}
-            placeItems="center"
           >
-            <VStack alignItems="flex-start" spacing={responsiveSpacing}>
-              <Image src={Logo} w="50px" filter="grayscale(100%)" />
-              <Heading size="md">IEEE McMaster Student Branch</Heading>
-              {renderContactInfo()}
-              {renderSocialInfo()}
-            </VStack>
-          </SimpleGrid>
-        </Container>
+            <Text fontSize="sm">©2021 IEEE McMaster Student Branch.</Text>
+            <Spacer />
+          </Container>
+        </Flex>
       </VStack>
-      <Flex w="100%" borderTop="1px solid" borderColor="blackAlpha.300">
-        <Container
-          as={Flex}
-          py={4}
-          flexDir="row"
-          spacing={4}
-          alignItems="center"
-        >
-          <Text fontSize="sm">©2021 IEEE McMaster Student Branch.</Text>
-          <Spacer />
-        </Container>
-      </Flex>
-    </VStack>
+    </DarkMode>
   );
 };
 

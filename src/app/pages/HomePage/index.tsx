@@ -25,6 +25,7 @@ import { teamData } from 'data/teamData';
 import { responsiveSpacing } from 'styles/chakraTheme';
 import HeaderBg from 'assets/bg/header-bg.png';
 import banner from 'assets/bg/banner.jpg';
+import JoinBanner from './components/JoinBanner';
 
 export function HomePage() {
   const history = useHistory();
@@ -165,6 +166,8 @@ export function HomePage() {
             </SimpleGrid>
           </Container>
         </Box>
+
+        <JoinBanner />
       </VStack>
     </>
   );

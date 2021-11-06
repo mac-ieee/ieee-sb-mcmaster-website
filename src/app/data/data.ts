@@ -7,6 +7,7 @@ export const socialInfo = {
   facebook: 'https://www.facebook.com/mcmasterIEEE/',
   insta: 'https://www.instagram.com/mcmaster_ieee/',
   linkedin: 'https://www.linkedin.com/company/mcmasterieee',
+  discord: 'https://discord.com/invite/YFGcGfxmR7',
 };
 
 export const calendarId =

@@ -123,13 +123,14 @@ const theme = extendTheme(
               bg: 'brand.satSecondary',
             },
           },
-          outline: {
-            borderColor: 'blackAlpha.700',
+          outline: props => ({
+            borderColor: mode('blackAlpha.700', 'whiteAlpha.700')(props),
             _hover: {
-              bg: 'black',
-              color: 'white',
+              bg: mode('black', 'white')(props),
+              color: mode('white', 'black')(props),
+              boxShadow: 'xl',
             },
-          },
+          }),
         },
       },
       TabPanel: {
@@ -156,7 +157,7 @@ const theme = extendTheme(
         },
         h1: {
           fontWeight: 900,
-          color: 'black',
+          color: mode('black', 'white')(props),
           fontSize: ['3xl', '4xl', '5xl', '5xl'],
         },
       }),
