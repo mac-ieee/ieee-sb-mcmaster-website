@@ -18,7 +18,7 @@ import MainNavbar from './components/MainNavbar';
 import { Events } from './pages/Events/Loadable';
 import Footer from './components/Footer';
 import { Chapters } from './pages/Chapters/Loadable';
-import { GlobalStyle } from '../styles/global-styles';
+
 export function App() {
   const { i18n } = useTranslation();
   return (
@@ -34,6 +34,7 @@ export function App() {
         />
       </Helmet>
       <MainNavbar />
+
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/about-us" component={AboutUs} />

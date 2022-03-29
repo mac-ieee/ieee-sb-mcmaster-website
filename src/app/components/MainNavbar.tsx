@@ -19,9 +19,6 @@ import {
   Heading,
   Spacer,
   Drawer,
-  DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -36,7 +33,6 @@ import {
 import { Link, useHistory } from 'react-router-dom';
 import './Navbar/navbar.scss';
 import { useEffect, useState } from 'react';
-import { AnimateSharedLayout, motion } from 'framer-motion';
 import React from 'react';
 import { Logo } from 'assets/logos/logos';
 export default function MainNavbar() {
@@ -44,25 +40,25 @@ export default function MainNavbar() {
   const [showScrollStyle, setShowScrollStyle] = useState(false);
   const btnRef = React.useRef();
   const closeRef = React.useRef();
-  const history = useHistory();
+  // const history = useHistory();
 
-  const handleScroll = () => {
-    setTimeout(() => {
-      if (window.scrollY > 200 && !showScrollStyle) {
-        setShowScrollStyle(true);
-      } else {
-        setShowScrollStyle(false);
-      }
-    }, 500);
-  };
+  // const handleScroll = () => {
+  //   setTimeout(() => {
+  //     if (window.scrollY > 200 && !showScrollStyle) {
+  //       setShowScrollStyle(true);
+  //     } else {
+  //       setShowScrollStyle(false);
+  //     }
+  //   }, 500);
+  // };
 
-  useEffect(() => {}, [history]);
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
+  // useEffect(() => {}, [history]);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [handleScroll]);
   return (
     <Box>
       <Flex
@@ -114,10 +110,10 @@ export default function MainNavbar() {
               display={{ base: 'none', md: 'block' }}
               color="ieee.primary"
             >
-              IEEE{' '}
-              {showScrollStyle
+              IEEE McMaster Student Branch
+              {/* {showScrollStyle
                 ? 'McMaster Student Branch'
-                : 'McMaster Student Branch'}
+                : 'McMaster Student Branch'} */}
             </Heading>
 
             <Spacer />
@@ -175,8 +171,8 @@ export default function MainNavbar() {
 }
 
 const DesktopNav = () => {
-  const CLinkColor = useColorModeValue('gray.600', 'gray.200');
-  const CLinkHoverColor = useColorModeValue('gray.800', 'white');
+  // const CLinkColor = useColorModeValue('gray.600', 'gray.200');
+  // const CLinkHoverColor = useColorModeValue('gray.800', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (

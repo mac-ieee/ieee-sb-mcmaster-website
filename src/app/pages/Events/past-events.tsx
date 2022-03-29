@@ -31,7 +31,7 @@ const PastEventsPage = () => {
     const fn = async () => {
       const evts: Array<any> = await getEventsWithinYear(yearSelected);
       evts.reverse();
-      setEvts(evts);  
+      setEvts(evts);
     };
 
     fn();
@@ -51,7 +51,7 @@ const PastEventsPage = () => {
           value={yearSelected}
           onChange={handleChange}
         >
-          {[2020, 2021].map(year => {
+          {[2022, 2021].map(year => {
             return <option value={year}>{year}</option>;
           })}
         </Select>

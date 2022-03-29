@@ -34,7 +34,7 @@ export const getEventsWithinYear = async (year?: number) => {
   // if year selected is still in this year
 
   // TODO Fix loose equality
-  if (!year || year == now.getFullYear()) {
+  if (!year || year === now.getFullYear()) {
     startOfYear = new Date(now.getFullYear(), 0);
     endOfYear = now;
   } else {
@@ -61,7 +61,6 @@ export const getEventsWithinYear = async (year?: number) => {
 };
 
 export const getPastEvents = async (items?: number, year?: number) => {
-  var date = new Date();
   return axios
     .get(
       `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${gAPIKey}`,

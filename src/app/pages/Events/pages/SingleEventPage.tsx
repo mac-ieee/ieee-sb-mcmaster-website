@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { calendarId, gAPIKey } from 'app/data/data';
-import { AspectRatio, GridItem, Wrap, WrapItem } from '@chakra-ui/react';
+import { AspectRatio, Wrap, WrapItem } from '@chakra-ui/react';
 import {
   Box,
   VStack,
@@ -18,14 +18,9 @@ import {
 } from '@chakra-ui/react';
 import _ from 'lodash';
 import { capitalize, formatDateObj } from 'utils/fns';
-import { RiGoogleFill } from 'react-icons/ri';
 import { responsiveSpacing } from 'styles/chakraTheme';
 import { driveDirectURI } from 'utils/g-calendar-api/gCalendarAPI';
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from 'react-html-parser';
+import ReactHtmlParser from 'react-html-parser';
 interface Props {}
 
 const parseEventDesc = (desc: string) => {
@@ -35,10 +30,7 @@ const parseEventDesc = (desc: string) => {
   if (desc.match(regExp)) {
     desc.match(regExp).forEach(key => {
       desc = desc.replace(key, '');
-
-      // let newKeys = key.replace(/[{}]/g, '').split('=');
       let newKeys = key.replace(/[{}]/g, '');
-      console.log(newKeys);
 
       var i = newKeys.indexOf('=');
 
@@ -95,7 +87,6 @@ const SingleEventPage = (props: Props) => {
       });
   }, [eventId]);
 
-  // const evtDetails = _.pick(evt, ['location']);
   const evtDetails = _.pick(evt, ['start', 'end', 'location']);
 
   const imageUrl = React.useMemo(
@@ -183,10 +174,12 @@ const SingleEventPage = (props: Props) => {
             <Image src={imageUrl} className="rounded" />
           </AspectRatio>
         )}
-        <Stack>
-          <Heading fontSize="xl">Event Description</Heading>
-          <Box>{ReactHtmlParser(descriptionData.desc)}</Box>
-        </Stack>
+        {descriptionData.desc && (
+          <Stack>
+            <Heading fontSize="xl">Event Description</Heading>
+            <Box>{ReactHtmlParser(descriptionData.desc)}</Box>
+          </Stack>
+        )}
       </SimpleGrid>
     </VStack>
   );

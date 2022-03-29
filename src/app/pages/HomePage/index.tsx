@@ -23,8 +23,8 @@ import { MotionBox } from 'app/components/MotionComponents';
 import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
 import { teamData } from 'data/teamData';
 import { responsiveSpacing } from 'styles/chakraTheme';
-import HeaderBg from 'assets/bg/header-bg.png';
-import banner from 'assets/bg/banner.jpg';
+// import HeaderBg from 'assets/bg/header-bg.png';
+// import banner from 'assets/bg/banner.jpg';
 import JoinBanner from './components/JoinBanner';
 
 export function HomePage() {

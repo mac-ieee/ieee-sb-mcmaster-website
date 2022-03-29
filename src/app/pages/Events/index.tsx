@@ -1,19 +1,9 @@
-import {
-  Box,
-  Container,
-  Heading,
-  VStack,
-  GridItem,
-  SimpleGrid,
-  AspectRatio,
-  chakra,
-} from '@chakra-ui/react';
-import { Switch, useRouteMatch, useLocation, Route } from 'react-router-dom';
-import React, { useState } from 'react';
-import EventBox from './components/EventBox';
+import { Box, Container, VStack, AspectRatio, chakra } from '@chakra-ui/react';
+import { Switch, useRouteMatch, Route } from 'react-router-dom';
+import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SingleEventPage from './pages/SingleEventPage';
-import EventsGrid from '../HomePage/components/EventsGrid';
+// import EventsGrid from '../HomePage/components/EventsGrid';
 // import Calendar from './components/Calendar';
 import { getUpcomingEvents } from 'utils/g-calendar-api/gCalendarAPI';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
@@ -52,13 +42,13 @@ const tabData: Array<ITabData> = [
 ];
 
 const Events = (props: Props) => {
-  const [upcomingEvts, setUpcomingEvts] = useState([]);
-  const { path, url } = useRouteMatch();
-  const location = useLocation();
+  // const [upcomingEvts, setUpcomingEvts] = useState([]);
+  const { path } = useRouteMatch();
 
-  React.useEffect(() => {
-    getUpcomingEvents(6).then(evts => setUpcomingEvts(evts));
-  }, []);
+  // React.useEffect(() => {
+  //   getUpcomingEvents(6).then(evts => setUpcomingEvts(evts));
+  // }, []);
+
   return (
     <>
       <Helmet>
@@ -68,9 +58,14 @@ const Events = (props: Props) => {
           content="Details of the Event hosted by IEEE McMaster Student Branch"
         />
       </Helmet>
-      <Box className="navbar-offset"></Box>
+      <Box className="navbar-offset" />
       <Switch>
-        <VStack py={responsiveSpacing} w="100%" textAlign="center">
+        <VStack
+          minH="57.4vh" // Cheaty way
+          py={responsiveSpacing}
+          w="100%"
+          textAlign="center"
+        >
           <Container>
             <Route exact path={path}>
               <VStack
