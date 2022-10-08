@@ -1,4 +1,4 @@
-import { Box, Container, Divider, IconButton, Image, Stack, Text, Wrap } from '@chakra-ui/react'
+import { Box, Container, Divider, IconButton, Image, Spacer, Stack, Text, Wrap } from '@chakra-ui/react'
 import { IconBrandDiscord, IconBrandFacebook, IconBrandGithub, IconBrandInstagram, IconBrandLinkedin } from '@tabler/icons'
 import Link from 'next/link'
 import React from 'react'
@@ -64,15 +64,14 @@ const Footer = () => {
                         <Image boxSize="5" src="/assets/ieee-sb-mcmaster-logo.png" alt="IEEE McMaster Student Branch Footer Logo"></Image>
                         <Text>©2022 IEEE McMaster Student Branch.</Text>
 
-
-
                         {Object.entries(contactInfo).map(([_, val]) => {
                             return <Link href={val.href} key={_}>{`${_}: ${val.label}`}</Link>
                         })}
                         {renderSocialInfo()}
 
                         <Link href="https://github.com/mac-ieee/ieee-sb-mcmaster-website">Contribute</Link>
-                        <Link href="sitemap">Sitemap</Link>
+                        {/* <Spacer />
+                        <Link href="sitemap">Sitemap</Link> */}
                     </Wrap>
 
 

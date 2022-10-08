@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, IconButton, Spacer, Image, useDisclosure, Icon, Divider } from "@chakra-ui/react";
+import { Box, Flex, Heading, IconButton, Spacer, Image, useDisclosure, Icon, Divider, Collapse, Stack } from "@chakra-ui/react";
 import React from "react";
 import { IconLayoutNavbar, IconMenu } from '@tabler/icons';
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
@@ -14,6 +14,14 @@ import {
   DrawerCloseButton,
 } from '@chakra-ui/react'
 
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from '@chakra-ui/react'
+
 const navbarName = 'IEEE McMaster Student Branch'
 
 const NAV_ITEMS = [
@@ -26,19 +34,19 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'Main Branch',
-        href: '/chapters/main-branch',
+        href: '/chapter/main-branch',
       },
       {
         label: 'Computer',
-        href: '/chapters/computer',
+        href: '/chapter/computer',
       },
       {
         label: 'Power and Energy Society',
-        href: '/chapters/power-and-energy-society',
+        href: '/chapter/power-and-energy-society',
       },
       {
         label: 'Engineering In Medicine & Biology Society',
-        href: '/chapters/engineering-in-medicine-and-biology-society',
+        href: '/chapter/engineering-in-medicine-and-biology-society',
       },
     ],
   },
@@ -48,14 +56,50 @@ const NAV_ITEMS = [
   },
 ]
 
+const NavItemHeader = ({ title }) => {
+  return <Prose>
+    <Heading as="h1" color="blackAlpha.800" _hover={{ ml: 1, color: 'black' }} className="anim-smooth" textTransform="uppercase" my='4 !important'>{title}</Heading>
+  </Prose>
+}
+
+const NavItemAccordion = ({ navItem, onClose }) => {
+  return <Accordion allowToggle>
+    <AccordionItem border="none">
+
+      <AccordionButton p={0} _hover={{}}>
+        <Box flex="1" textAlign="left">
+          <NavItemHeader title={navItem.label} />
+        </Box>
+        <AccordionIcon boxSize="10" mr={4} />
+      </AccordionButton>
+
+      <AccordionPanel pb={4} px={0}>
+        <Stack>
+          {navItem.children.map((child) => {
+            return <Link key={child.label} href={child.href}>
+              <a onClick={onClose}>
+                <Prose className="anim-smooth" bg="blackAlpha.50" _hover={{ bg: 'blackAlpha.100' }} p={2} px={4} rounded="xl">
+                  <Heading my={'2 !important'} as='h3'>{child.label}</Heading>
+                </Prose>
+              </a>
+            </Link>
+          })}
+        </Stack>
+      </AccordionPanel>
+    </AccordionItem>
+  </Accordion>
+}
+
 const NavItem = (props) => {
   const { navItem } = props
+
+  if (navItem.children !== undefined) {
+    return <NavItemAccordion navItem={navItem} onClose={props.onClose} />
+  }
+
   return <Link href={navItem.href || '/'} passHref >
     <a onClick={props.onClose}>
-      <Prose>
-        <Heading as="h1" color="blackAlpha.800" _hover={{ ml: 1, color: 'black' }} className="anim-smooth" textTransform="uppercase" my='4 !important'>{navItem.label}</Heading>
-      </Prose>
-
+      <NavItemHeader title={navItem.label} />
     </a>
   </Link>
 }
@@ -87,7 +131,7 @@ function NavbarDrawer() {
               // }
               return <>
                 <NavItem key={item.label} navItem={item} onClose={onClose} />
-                <Divider key={i} borderColor="blackAlpha.500" />
+                {<Divider key={i} borderColor="blackAlpha.500" />}
               </>
 
             })}
@@ -107,7 +151,7 @@ function NavbarDrawer() {
 }
 
 const Navbar = () => {
-  return <Flex alignItems="center" bg="white" borderBottom="1px solid" borderBottomColor={"common.borderColor"}>
+  return <Flex alignItems="center" bg="white" borderBottom="1px solid" borderBottomColor={"blackAlpha.300"}>
     <Link href="/" passHref>
       <Flex p={2} alignItems="center" as="a">
         <Image src="/assets/ieee-sb-mcmaster-logo.png" alt="IEEE SB McMaster Logo" boxSize="8" mr="2" />

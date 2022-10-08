@@ -19,7 +19,7 @@ const AboutChapterPage = () => {
     return (
         <>
             <Container>
-                <DataTabs onTabsChange={handleTabsChange} data={aboutChaptersTabData}></DataTabs>
+                <DataTabs onTabsChange={handleTabsChange} tabIndexProp={aboutChaptersTabData.findIndex(data => data.href == chapterId)} data={aboutChaptersTabData}></DataTabs>
                 <HeaderSection alt title={chapterInfo[chapterId].name} icon={chapterInfo[chapterId].icon}></HeaderSection>
                 <Grid>
                     <ExecCard name="Calvin Suen"></ExecCard>

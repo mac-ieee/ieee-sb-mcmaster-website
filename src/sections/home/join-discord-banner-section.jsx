@@ -10,7 +10,7 @@ const JoinDiscordBannerSection = () => {
                 <Stack p="8" rounded="xl" bgGradient='linear(to-r, #242EA7, #8E8AF7)' direction={["column", "row"]} alignItems={['baseline', 'center']} spacing="4">
                     <Heading as={'h3'} my="0 !important" color="white">Interested in joining us?</Heading>
                     <Spacer />
-                    <Button size="md" variant="white" leftIcon={<IconBrandDiscord />}>Hop into the Discord!</Button>
+                    <Button size="lg" variant="white" leftIcon={<IconBrandDiscord />}>Hop into the Discord!</Button>
                 </Stack>
             </Prose>
         </Container>

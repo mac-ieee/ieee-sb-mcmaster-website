@@ -7,7 +7,7 @@ import React from 'react'
 const UpcomingEventsAndWorkshopsSection = () => {
     return (
         <Container>
-            <SimpleGrid columns={{ base: 1, md: 3 }}>
+            <SimpleGrid gap={16} columns={{ base: 1, md: 3 }}>
                 <GridItem colSpan={1}>
                     <Box>
                         <Center bg="blackAlpha.500" p={2} w="fit-content" rounded="2xl">

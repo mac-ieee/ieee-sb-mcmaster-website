@@ -21,14 +21,12 @@ const ChapterCard = (props) => {
 const SbChapterBranches = () => {
     return (
         <Stack p={2} direction="row" alignItems={"center"} bg="blackAlpha.50">
-
             <Stack direction="row" alignItems="center">
                 <Icon as={IconGitBranch} boxSize="12" />
                 <Prose>
                     <Heading my="0 !important" as="h1">BRANCHES -{'>'}</Heading>
                 </Prose>
             </Stack>
-
             <Spacer />
             {Object.entries(chapterInfo).map(([id, val]) => {
                 return <ChapterCard key={val.name} chapterData={val} chapterId={id} />
