@@ -3,7 +3,7 @@ import { Prose } from '@nikolovlazar/chakra-ui-prose'
 import { IconGitBranch } from '@tabler/icons'
 import Link from 'next/link'
 import React from 'react'
-import { chapterInfo } from '../../../data/data'
+import { chapterInfo } from '../../../data'
 
 const ChapterCard = (props) => {
     const { chapterData } = props

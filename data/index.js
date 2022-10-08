@@ -30,3 +30,19 @@ export const chapterInfo = {
     logo: "/assets/EMBSLogo.png",
   },
 };
+
+export const contactInfo = {
+  Office: {
+    label: "ITB 141",
+    href: "https://www.mcmaster.ca/uts/maps/itb1.html",
+  },
+  Email: { label: "sb.mcmaster@ieee.org", href: "mailto:sb.mcmaster@ieee.org" },
+};
+
+export const socialInfo = {
+  facebook: "https://www.facebook.com/mcmasterIEEE/",
+  insta: "https://www.instagram.com/mcmaster_ieee/",
+  linkedin: "https://www.linkedin.com/company/mcmasterieee",
+  github: "https://github.com/mac-ieee",
+  discord: "https://discord.com/invite/YFGcGfxmR7",
+};

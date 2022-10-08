@@ -14,7 +14,11 @@ export const DataTabs = (props) => {
 
     return (
         <Tabs onChange={handleTabsChange} isLazy py={4} variant='soft-rounded' colorScheme={'messenger'} align="center">
-            <TabList bg="blackAlpha.50" border="1px solid" borderColor="blackAlpha.700" rounded="full"
+            <TabList bg="blackAlpha.50"
+
+                // border="1px solid" borderColor="blackAlpha.700" 
+
+                rounded="full"
                 width="fit-content"
             >
                 {data.map((tab, index) => (

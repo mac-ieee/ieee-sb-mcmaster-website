@@ -15,8 +15,6 @@ const tabData = [
     {
         label: 'Past Events',
         href: 'past-events',
-        content:
-            'Perhaps the surest dish ever invented but fills the stomach more than rice.',
     },
     {
         label: 'Calendar',
@@ -37,11 +35,16 @@ const tabData = [
 
 
 const EventsPage = () => {
+
+    const handleTabsChange = (data) => {
+
+    }
+
     return (
         <Stack>
             <HeaderSection title="Events" icon={IconCalendarEvent} />
             <Container>
-                <DataTabs data={tabData} />
+                <DataTabs onTabsChange={handleTabsChange} data={tabData} />
             </Container>
 
         </Stack>
