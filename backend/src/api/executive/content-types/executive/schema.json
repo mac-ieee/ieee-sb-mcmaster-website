@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "executives",
+  "info": {
+    "singularName": "executive",
+    "pluralName": "executives",
+    "displayName": "Executive",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    }
+  }
+}

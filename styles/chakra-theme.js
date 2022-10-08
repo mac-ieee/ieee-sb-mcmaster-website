@@ -10,7 +10,7 @@ import { withProse } from "@nikolovlazar/chakra-ui-prose";
 
 const fonts = {
   heading: `'Inter', sans-serif`,
-  body: `"IBM Plex Serif", sans-serif`,
+  body: `"Inter", sans-serif`,
 };
 
 const buttonVariants = {
@@ -51,7 +51,8 @@ const styles = {
   styles: {
     global: {
       body: {
-        bg: "#fffcf2",
+        // bg: "#fffcf2",
+        bg: "#fcfaf4",
       },
     },
   },

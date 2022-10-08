@@ -1,16 +1,26 @@
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import React from "react";
 import nprogress from "nprogress";
 import router from "next/router";
 
-import "@fontsource/inter";
+import "@fontsource/inter/900.css";
+import "@fontsource/inter/800.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/200.css";
+import "@fontsource/inter/100.css";
+
 import "@fontsource/ibm-plex-serif";
 
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, Flex } from "@chakra-ui/react";
 import { theme } from "../styles/chakra-theme";
 import Navbar from "../src/components/navbar";
 import { DefaultSeo } from "next-seo";
 import { default as SEO } from "../config/next-seo.config";
+import Footer from "components/footer";
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -32,8 +42,13 @@ function MyApp({ Component, pageProps }) {
   return (
     <ChakraProvider theme={theme}>
       <DefaultSeo {...SEO} />
-      <Navbar />
-      <Component {...pageProps} />
+      <Flex flexDir="column" minHeight={'100vh'}>
+        <Navbar />
+        <Flex grow="1" flexDir="inherit">
+          <Component {...pageProps} />
+        </Flex>
+        <Footer />
+      </Flex>
     </ChakraProvider>
   );
 }

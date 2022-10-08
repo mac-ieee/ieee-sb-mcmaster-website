@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "backend-dev": "cd backend && yarn run strapi develop",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -22,7 +23,8 @@
     "next-seo": "^5.5.0",
     "nprogress": "^0.2.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "sass": "^1.55.0"
   },
   "devDependencies": {
     "eslint": "8.25.0",
