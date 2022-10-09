@@ -17,7 +17,7 @@ export const DataTabs = (props) => {
             onChange={handleTabsChange} tabIndex={tabIndex} isLazy py={4} variant='soft-rounded' colorScheme={'messenger'} align="center">
             <TabList bg="white"
                 border="2px solid" borderColor="blackAlpha.800"
-                boxShadow="xl"
+                // boxShadow="xl"
                 rounded="full"
                 width="fit-content"
             >

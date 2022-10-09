@@ -1,8 +1,15 @@
+import { Heading, Stack } from '@chakra-ui/react'
+import { Prose } from '@nikolovlazar/chakra-ui-prose'
 import React from 'react'
 
-const EventThumbnailCard = () => {
+const EventThumbnailCard = (props) => {
+    const { evt } = props
     return (
-        <div>EventThumbnailCard</div>
+        <Stack>
+            <Prose>
+                <Heading as="h4">Event Name</Heading>
+            </Prose>
+        </Stack>
     )
 }
 

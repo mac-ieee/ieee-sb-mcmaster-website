@@ -21,6 +21,8 @@ import Navbar from "../src/components/navbar";
 import { DefaultSeo } from "next-seo";
 import { default as SEO } from "../config/next-seo.config";
 import Footer from "components/footer";
+// eslint-disable-next-line @next/next/no-document-import-in-page
+import { Head } from "next/document";
 
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
@@ -40,16 +42,18 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   return (
-    <ChakraProvider theme={theme}>
+    <>
       <DefaultSeo {...SEO} />
-      <Flex flexDir="column" minHeight={'100vh'}>
-        <Navbar />
-        <Flex grow="1" flexDir="inherit">
-          <Component {...pageProps} />
+      <ChakraProvider theme={theme}>
+        <Flex flexDir="column" minHeight={'100vh'}>
+          <Navbar />
+          <Flex grow="1" flexDir="inherit">
+            <Component {...pageProps} />
+          </Flex>
+          <Footer />
         </Flex>
-        <Footer />
-      </Flex>
-    </ChakraProvider>
+      </ChakraProvider>
+    </>
   );
 }
 

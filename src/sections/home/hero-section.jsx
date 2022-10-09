@@ -1,14 +1,18 @@
-import { AbsoluteCenter, Box, Center, Container, Heading, Icon, Stack } from '@chakra-ui/react'
+import { Center, Container, Heading, Stack } from '@chakra-ui/react'
 import { Prose } from '@nikolovlazar/chakra-ui-prose'
-import { IconCpu2, IconGlobe } from '@tabler/icons'
 import React from 'react'
 
 const HeroSection = () => {
     return (
-        <Container pos="relative" p={[8, 16, 32, 32, 48]} bg="brand.primary" rounded="xl">
-            <Center pos="absolute">
-                <Icon as={IconCpu2} boxSize="200" strokeWidth={1} transform="auto-gpu" rotate={'45'} />
-            </Center>
+        <Container pos="relative" p={[8, 12, 16, 32, 48]} bg="brand.primary" roundedBottom={'xl'}
+
+        // bgImage="/mcmaster-campus.jpg"
+        // bgSize={'cover'}
+        // bgPos='bottom'
+        >
+            {/* <Center pos="absolute">
+                <Icon as={IconCpu} boxSize="200" strokeWidth={1} transform="auto-gpu" rotate={'45'} />
+            </Center> */}
             <Prose>
                 <Center>
                     <Stack>

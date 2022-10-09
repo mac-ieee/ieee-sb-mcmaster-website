@@ -56,9 +56,14 @@ const Footer = () => {
         );
     }
     return (
-        <Box p={4}>
+        <Box p={4} mt={[4, 4, 8, 8]}>
             <Container>
                 <Stack spacing={4}>
+                    <Wrap align="center" spacing={8} justify="base">
+                        <Image w="30vh" src="/ece.png" alt="McMaster University Engineering ECE Logo" />
+                        {/* <Image h="20vw" src="/ieeecanada.png" alt="IEEE Canada Logo" /> */}
+                    </Wrap>
+
                     <Divider borderColor="blackAlpha.300" />
                     <Wrap spacing={4} fontSize="sm" align='center'>
                         <Image boxSize="5" src="/assets/ieee-sb-mcmaster-logo.png" alt="IEEE McMaster Student Branch Footer Logo"></Image>
