@@ -14,6 +14,9 @@ This website serves to be a replacement of the currently deployed website, but d
 
 * Google Calendar API - to fetch current events from the IEEE Workshops calendar.
 
+## Why no TypeScript?
+
+For simpler projects JavaScript will do just fine. Enterprise level products with large codebases absolutely benefit from TypeScripts offerings but it commonly causes problems that simply don't matter during runtime. Plus its easier for newcomers to learn JavaScript first before having to deal with TypeScript.
 
 # Development
 
@@ -31,14 +34,13 @@ yarn install
 ```bash
 yarn dev
 ```
-Next, run the Strapi CMS development server (this is required otherwise an error will occur on pages that rely on it.):
+3. Run the Strapi CMS development server (this is required otherwise an error will occur on pages that rely on it.):
 
 ```bash
 yarn backend-dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the site and [http://localhost:1337](http://localhost:1337) to access the Strapi development server
-
 
 ## Learn More
 
