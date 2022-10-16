@@ -1,4 +1,4 @@
-import { Box, Stack, Button, Heading, Text, Flex, Center, chakra, Container, SimpleGrid, GridItem, Icon } from '@chakra-ui/react'
+import { Box, Stack, Button, Heading, Text, Flex, Center, chakra, Container, SimpleGrid, GridItem, Icon, Image } from '@chakra-ui/react'
 import { Prose } from '@nikolovlazar/chakra-ui-prose'
 import { IconCalendarPlus, IconHourglassLow, IconX } from '@tabler/icons'
 import Link from 'next/link'
@@ -25,12 +25,14 @@ const UpcomingEventsAndWorkshopsSection = () => {
 
                 </GridItem>
                 <GridItem colSpan={2}>
-                    <Flex grow={1} h="100%" bg="blackAlpha.50" rounded="xl">
-                        <Center w="100%">
+                    <Stack alignItems="center" grow={1} spacing={0} h="100%" bg="blackAlpha.50" rounded="xl">
+                        <Image src="/assets/illustrations/Events-pana.svg" alt="IEEE McMaster Student Branch Events Image" />
+                        <Link href="https://storyset.com/event"><a><Text fontSize="xs" opacity="0.2">Event illustrations by Storyset</Text></a></Link>
+                        {/* <Center w="100%">
                             <Icon as={IconX} />
                             &nbsp; There are no upcoming events!
-                        </Center>
-                    </Flex>
+                        </Center> */}
+                    </Stack>
                 </GridItem>
 
             </SimpleGrid>

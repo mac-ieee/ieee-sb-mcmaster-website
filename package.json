@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "backend-dev": "cd backend && yarn run strapi develop",
+    "deploy-backend": "git subtree push --prefix backend heroku main",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

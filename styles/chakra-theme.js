@@ -1,12 +1,10 @@
 import { extendTheme } from "@chakra-ui/react";
 import { withProse } from "@nikolovlazar/chakra-ui-prose";
-// declare global {
-//   namespace globalThis {
-//     var PADDING: Record<string, number>;
-//   }
-// }
 
-// globalThis.PADDING = { base: 4, md: 8 };
+const config = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+};
 
 const fonts = {
   heading: `'Inter', sans-serif`,
@@ -136,6 +134,7 @@ export const theme = extendTheme(
     ...styles,
     colors,
     fonts,
+    config,
   },
   withProse()
 );

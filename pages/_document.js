@@ -1,4 +1,5 @@
 // @ts-nocheck
+import { ColorModeScript } from "@chakra-ui/react";
 import { Html, Head, Main, NextScript } from "next/document";
 import React from "react";
 
@@ -43,6 +44,7 @@ export default function Document() {
         <Favicon />
       </Head>
       <body>
+        <ColorModeScript initialColorMode="light" />
         <Main />
         <NextScript />
       </body>
