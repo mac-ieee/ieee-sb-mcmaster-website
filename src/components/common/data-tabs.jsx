@@ -2,8 +2,9 @@ import React from 'react'
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 
 export const DataTabs = (props) => {
-    const { data, onTabsChange, tabIndexProp } = props
-    const [tabIndex, setTabIndex] = React.useState(tabIndexProp)
+    const { data, onTabsChange } = props
+    // const tabIndexProp = props.tabIndex
+    // const [tabIndex, setTabIndex] = React.useState(tabIndexProp)
 
     const handleTabsChange = (index) => {
         if (typeof onTabsChange === 'function') { onTabsChange(data[index]) }
@@ -14,10 +15,10 @@ export const DataTabs = (props) => {
 
     return (
         <Tabs size={['sm', 'sm', 'md', 'md']}
-            onChange={handleTabsChange} tabIndex={tabIndex} isLazy py={4} variant='soft-rounded' colorScheme={'messenger'} align="center">
+            onChange={handleTabsChange} index={props.tabIndex} py={4} variant='soft-rounded' colorScheme={'messenger'} align="center">
             <TabList bg="white"
                 border="2px solid" borderColor="blackAlpha.800"
-                // boxShadow="xl"
+                boxShadow="xl"
                 rounded="full"
                 width="fit-content"
             >

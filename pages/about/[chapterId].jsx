@@ -35,7 +35,7 @@ const AboutChapterPage = ({ execs }) => {
             <HeaderSection title={'About'} icon={IconInfoSquare}></HeaderSection>
             <Container>
 
-                <Stack >
+                <Stack mt="-25px">
                     <DataTabs onTabsChange={handleTabsChange} tabIndexProp={aboutChaptersTabData.findIndex(data => data.href == chapterId)} data={aboutChaptersTabData}></DataTabs>
 
                 </Stack>

@@ -8,17 +8,21 @@ import JoinDiscordBannerSection from "sections/home/join-discord-banner-section"
 import HeroSection from "sections/home/hero-section";
 import { NextSeo } from "next-seo";
 
+const spacing = [8, 8, 8, 8, 24]
+
 export default function Home() {
   return (
     <>
       <NextSeo
         title="Homepage"
         description="" />
-      <Stack spacing={24}>
+      <Stack spacing={spacing}>
         {/* <SbChapterBranches /> */}
         <HeroSection />
-        <UpcomingEventsAndWorkshopsSection />
-        <JoinDiscordBannerSection />
+        <Stack p={[4, 4, 4, 4, 0]} spacing={spacing}>
+          <UpcomingEventsAndWorkshopsSection />
+          <JoinDiscordBannerSection />
+        </Stack>
       </Stack>
     </>
   );
