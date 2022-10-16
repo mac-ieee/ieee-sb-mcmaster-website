@@ -52,7 +52,6 @@ const UpcomingEventsPage = (props) => {
 export async function getServerSideProps(context) {
     try {
         const evts = await getUpcomingEvents()
-        console.log(evts)
         return {
             props: { evts: evts }, // will be passed to the page component as props
         }

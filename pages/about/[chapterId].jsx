@@ -6,9 +6,33 @@ import HeaderSection from 'components/common/header-section'
 import { NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { aboutChaptersTabData } from '.'
 import { chapterInfo } from '../../data'
 import { fetchAPI } from '../../lib/api'
+
+
+const aboutChaptersTabData = [
+    // {
+    //     label: 'IEEEMSB',
+    //     href: 'ieee',
+    // },
+    {
+        label: 'Main Branch',
+        href: 'main-branch',
+    },
+    {
+        label: 'Computer',
+        href: 'computer',
+    },
+    {
+        label: 'PES',
+        href: 'power-and-energy-society',
+    },
+    {
+        label: 'EMBS',
+        href: 'engineering-in-medicine-and-biology-society',
+    }
+
+]
 
 const AboutChapterPage = ({ execs }) => {
     const router = useRouter()
@@ -17,8 +41,6 @@ const AboutChapterPage = ({ execs }) => {
     const handleTabsChange = (data) => {
         router.push(`/about/${data.href}`)
     }
-
-    console.log(execs)
 
     if (!chapterId) { return null }
 
@@ -57,7 +79,6 @@ const AboutChapterPage = ({ execs }) => {
 
 export async function getServerSideProps(context) {
 
-    console.log(context.params.chapterId)
     const chapters = await fetchAPI("/chapters", {
         filters: {
             slug: {
