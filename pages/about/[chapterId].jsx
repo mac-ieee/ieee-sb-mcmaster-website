@@ -53,7 +53,6 @@ const AboutChapterPage = ({ execs }) => {
                 title={`About: ${chapterLabel}`}
                 description=""
             />
-            {/* <HeaderSection title={chapterInfo[chapterId].name} icon={chapterInfo[chapterId].icon}></HeaderSection> */}
             <HeaderSection title={'About'} icon={IconInfoSquare}></HeaderSection>
             <Container>
 

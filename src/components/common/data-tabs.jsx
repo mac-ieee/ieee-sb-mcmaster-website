@@ -14,7 +14,7 @@ export const DataTabs = (props) => {
     }
 
     return (
-        <Tabs size={['sm', 'sm', 'md', 'md']}
+        <Tabs isLazy size={['sm', 'sm', 'md', 'md']}
             onChange={handleTabsChange} index={props.tabIndex} py={4} variant='soft-rounded' colorScheme={'messenger'} align="center">
             <TabList bg="white"
                 border="2px solid" borderColor="blackAlpha.800"
