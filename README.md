@@ -42,6 +42,10 @@ yarn backend-dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the site and [http://localhost:1337](http://localhost:1337) to access the Strapi development server
 
+## Contribute  
+
+Take a look at our issues for some tickets to work on, or you can submit one!
+
 ## Learn More
 
 To learn more about our stack, take a look at the following resources:
