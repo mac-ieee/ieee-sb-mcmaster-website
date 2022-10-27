@@ -1,17 +1,11 @@
+import { Container, Heading, Text } from '@chakra-ui/react'
 import HeaderSection from 'components/common/header-section'
 import { NextSeo } from 'next-seo'
-import { useRouter } from 'next/router'
 import React from 'react'
 import { chapterInfo } from '../../data'
 
-const SubChapterPage = () => {
-    const router = useRouter()
-    const { chapterId } = router.query
-
-    if (!chapterId) { return null }
-
-    const chapter = chapterInfo[chapterId]
-
+const PESPage = () => {
+    const chapter = chapterInfo['main-branch']
     return (
         <>
             <NextSeo
@@ -19,10 +13,13 @@ const SubChapterPage = () => {
                 description=""
             />
             <HeaderSection useImage title={chapter.name} icon={chapter.logo}></HeaderSection>
+            <Container>
+                {/* PUT YOUR CODE HERE */}
+            </Container>
         </>
 
     )
 }
 
 
-export default SubChapterPage
+export default PESPage
