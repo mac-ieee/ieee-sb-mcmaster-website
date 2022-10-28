@@ -28,13 +28,17 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ```bash
 yarn install
 ```
+2. Set up the environment variables:
+* Copy the contents of `.env.example` to a new file named `.env.local` in `/`
+* Copy the contents of `/backend/.env.example` to a new file named `.env` located at `/backend`
 
-2. Run the Next.js development server:
+
+3. Run the Next.js development server:
 
 ```bash
 yarn dev
 ```
-3. Run the Strapi CMS development server (this is required otherwise an error will occur on pages that rely on it.):
+4. Run the Strapi CMS development server (this is required otherwise an error will occur on pages that rely on it.):
 
 ```bash
 yarn backend-dev
