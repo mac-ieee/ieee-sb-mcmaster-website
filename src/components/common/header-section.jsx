@@ -6,7 +6,7 @@ const HeaderSection = (props) => {
     const { title, icon, useImage = false, category = '', noIcon = false } = props
     return (
         <Box py={8}
-            bgGradient="linear(to-b, blackAlpha.100, blackAlpha.50)"
+            // bgGradient="linear(to-b, blackAlpha.100, blackAlpha.50)"
             roundedBottom="xl"
         >
             <Container>

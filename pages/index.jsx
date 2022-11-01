@@ -19,7 +19,7 @@ export default function Home() {
       <Stack spacing={spacing}>
         {/* <SbChapterBranches /> */}
         <HeroSection />
-        <Stack p={[4, 4, 4, 4, 0]} spacing={spacing}>
+        <Stack spacing={spacing}>
           <UpcomingEventsAndWorkshopsSection />
           <JoinDiscordBannerSection />
         </Stack>

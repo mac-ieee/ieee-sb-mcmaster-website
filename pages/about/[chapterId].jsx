@@ -11,14 +11,14 @@ import { fetchAPI } from '../../lib/api'
 
 
 const aboutChaptersTabData = [
+    // // {
+    // //     label: 'IEEEMSB',
+    // //     href: 'ieee',
+    // // },
     // {
-    //     label: 'IEEEMSB',
-    //     href: 'ieee',
+    //     label: 'Services',
+    //     href: 'services',
     // },
-    {
-        label: 'Main Branch',
-        href: 'main-branch',
-    },
     {
         label: 'Computer',
         href: 'computer',

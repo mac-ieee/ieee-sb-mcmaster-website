@@ -33,10 +33,6 @@ const NAV_ITEMS = [
     label: 'Chapters',
     children: [
       {
-        label: 'Main Branch',
-        href: '/chapter/main-branch',
-      },
-      {
         label: 'Computer',
         href: '/chapter/computer',
       },
@@ -49,6 +45,10 @@ const NAV_ITEMS = [
         href: '/chapter/engineering-in-medicine-and-biology-society',
       },
     ],
+  },
+  {
+    label: 'Services',
+    href: '/services',
   },
   {
     label: 'About',

@@ -31,6 +31,22 @@ export const chapterInfo = {
   },
 };
 
+export const servicesData = {
+  soldering: {
+    title: "Soldering",
+    bg: "/assets/services-soldering.jpg",
+    desc: "",
+  },
+  "pcb-milling": {
+    title: "PCB Milling",
+    bg: "/assets/services-pcb-milling.jpg",
+  },
+  "digikey-ordering": {
+    title: "DigiKey Ordering",
+    bg: "/assets/services-digikey.jpg",
+  },
+};
+
 export const contactInfo = {
   Office: {
     label: "ITB 141",
