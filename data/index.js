@@ -47,6 +47,35 @@ export const servicesData = {
   },
 };
 
+export const execData = {
+  "main-branch": {
+    "Branch Mentor": "Aron Markandaier",
+    "Branch Chair": "Isaiah Ngou",
+    // @ts-ignore
+    "Branch Chair ": "Matteo Tullo",
+    "Branch Vice-Chair": "Tina Ismail",
+    "Branch Treasurer": "Daniel Wei",
+    "Branch Webmaster": "Felix Ha",
+    "PR Head": "Yixin Wang",
+  },
+  computer: {
+    "Computer Chair": "Corbin Jarrett",
+    "Computer Vice Chair": "Sabrina Sousa",
+    // @ts-ignore
+    "Computer Vice Chair ": "Issac Thomas",
+    "Computer Secretary": "",
+  },
+  "power-and-energy-society": {
+    "PES Chair": "Edward Kang",
+    "PES Vice-Chair": "Evan Tanudjaja",
+    "PES Secretary": "Ioannis Papaspyridis",
+  },
+  "engineering-in-medicine-and-biology-society": {
+    "EMBS Chair": "Rawan Mahdi",
+    "EMBS Vice-Chair": "Luna Aljammal",
+    "EMBS Secretary": "Allister Ashwal",
+  },
+};
 export const contactInfo = {
   Office: {
     label: "ITB 141",

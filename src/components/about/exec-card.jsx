@@ -3,6 +3,8 @@ import React from 'react'
 
 const ExecCard = (props) => {
     const { name, avatar, role } = props
+
+    if (!name) return null
     return (
         <Stack p={8} bg="blackAlpha.50"
             bgGradient="linear(to-b, whiteAlpha.500, transparent)"
