@@ -2,6 +2,7 @@ import { AspectRatio, Heading, Spacer, Stack, Text, Box } from '@chakra-ui/react
 import { Prose } from '@nikolovlazar/chakra-ui-prose'
 import Link from 'next/link'
 import React from 'react'
+import { formatDateObj } from 'utils/date-fns'
 
 const EventThumbnailCard = (props) => {
     const { evt } = props
@@ -14,8 +15,9 @@ const EventThumbnailCard = (props) => {
                         <Spacer />
                         <Prose>
                             <Heading as="h4" my="0 !important">{evt.summary}</Heading>
-                            <Text my="0 !important">{evt.start.date}</Text>
-                            <Text my="0 !important">{evt.start.dateTime}</Text>
+
+                            <Text my="0 !important">{formatDateObj(evt.start)}</Text>
+                            {/* <Text my="0 !important">{formatDateObj(evt.start)evt.start.dateTime}</Text> */}
                         </Prose>
 
                     </Stack>

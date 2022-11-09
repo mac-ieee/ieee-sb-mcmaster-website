@@ -8,6 +8,7 @@ import { driveDirectURI, getEventForId } from '../../lib/google-calendar-api'
 import rehypeRaw from "rehype-raw";
 import { NextSeo } from 'next-seo'
 import { start } from 'nprogress'
+import { formatDateObj } from 'utils/date-fns'
 
 
 const EventSubPage = ({ evt, error }) => {
@@ -27,28 +28,32 @@ const EventSubPage = ({ evt, error }) => {
                 <Container>
                     <Stack spacing={[4, 4, 8, 8, 8]} mx={[4, 4, 4, 4, 0]}>
 
-                        {Object.keys((({ start, end }) => ({ start, end }))(evt)).length &&
-                            <Box p={4} bg="brand.primary" rounded="xl" color="white">
-                                {evt.start.dateTime && <p>Start: {evt.start.dateTime}</p>}
-                                {evt.start.date && <p>Start: {evt.start.date}</p>}
-                                {evt.end.dateTime && <p>End: {evt.end.dateTime}</p>}
-                                {evt.end.date && <p>End: {evt.end.date}</p>}
-                            </Box>
-                        }
-                        <Prose>
-                            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[4, 4, 8, 8, 8]}>
-                                {imageUrl ? <Image src={imageUrl} alt={`Image for ${evt.summary}`} /> : <Center p={8} rounded="xl" bg="blackAlpha.50">No Image Provided</Center>}
 
-                                <Box>
+
+                        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={[4, 4, 8, 8, 8]}>
+                            {imageUrl ? <Image src={imageUrl} alt={`Image for ${evt.summary}`} /> : <Center p={8} rounded="xl" bg="blackAlpha.50">No Image Provided</Center>}
+
+
+                            <Stack spacing={4}>
+                                {Object.keys((({ start, end }) => ({ start, end }))(evt)).length &&
+                                    <Box p={4} bg="brand.primary" rounded="xl" color="white">
+                                        {evt.start && <p><b>Start:</b> {formatDateObj(evt.start)}</p>}
+                                        {evt.end && <p><b>End:</b>  {formatDateObj(evt.end)}</p>}
+
+                                    </Box>
+                                }
+                                <Prose>
                                     {/* <Divider /> */}
                                     <Heading as="h3" my="0 !important">Event Description</Heading>
                                     <ReactMarkdown rehypePlugins={[rehypeRaw]}>
 
                                         {evt.description ? evt.description : 'No Description Provided'}
                                     </ReactMarkdown>
-                                </Box>
-                            </SimpleGrid>
-                        </Prose>
+                                </Prose>
+                            </Stack>
+
+                        </SimpleGrid>
+
                     </Stack>
                 </Container >
             </Stack>
