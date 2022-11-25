@@ -10,16 +10,17 @@ const EventThumbnailCard = (props) => {
     return (
         <Link href={`/events/${evt.id}`}>
             <a>
-                <AspectRatio ratio={4 / 3}>
+                <AspectRatio ratio={4 / 3} className="anim-smooth hover-opacity">
                     <Stack bg="brand.secondary" h="100%" p={4} rounded="xl" alignItems="baseline !important">
                         <Spacer />
                         <Prose>
-                            <Heading as="h4" my="0 !important">{evt.summary}</Heading>
-
-                            <Text my="0 !important">{formatDateObj(evt.start)}</Text>
-                            {/* <Text my="0 !important">{formatDateObj(evt.start)evt.start.dateTime}</Text> */}
+                            <Heading as="h4" my="0 !important">
+                                {evt.summary}
+                            </Heading>
+                            <Text my="0 !important">
+                                {formatDateObj(evt.start)}
+                            </Text>
                         </Prose>
-
                     </Stack>
                 </AspectRatio>
             </a>

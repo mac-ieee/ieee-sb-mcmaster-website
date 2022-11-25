@@ -40,7 +40,7 @@ const AboutTabLayout = (props) => {
     return (
         <>
             <HeaderSection title="About" icon={IconCalendarEvent} />
-            <Container mt="-25px">
+            <Container mt="-35px">
                 <DataTabs tabIndex={tabIndexProp} data={tabData} onTabsChange={handleTabsChange} />
             </Container>
             {props.children}

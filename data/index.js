@@ -52,17 +52,17 @@ export const execData = {
     "Branch Mentor": "Aron Markandaier",
     "Branch Chair": "Isaiah Ngou",
     // @ts-ignore
-    "Branch Chair ": "Matteo Tullo",
+    "Branch Chair­": "Matteo Tullo",
     "Branch Vice-Chair": "Tina Ismail",
     "Branch Treasurer": "Daniel Wei",
     "Branch Webmaster": "Felix Ha",
-    "PR Head": "Yixin Wang",
+    "Public Relations Head": "Yixin Wang",
   },
   computer: {
     "Computer Chair": "Corbin Jarrett",
     "Computer Vice Chair": "Sabrina Sousa",
-    // @ts-ignore
-    "Computer Vice Chair ": "Issac Thomas",
+    // @ts-ignore (kind of a cheat to have duplicate using https://unicode-table.com/en/00AD/)
+    "Computer Vice Chair­": "Issac Thomas",
     "Computer Secretary": "",
   },
   "power-and-energy-society": {
