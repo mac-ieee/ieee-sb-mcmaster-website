@@ -24,7 +24,7 @@ const EventSubPage = ({ evt, error }) => {
     return (
         <>
             <NextSeo title={`${evt.summary} on ${evt.start.date}`} />
-            <Stack spacing={4}>
+            <Stack spacing={[2, 2, 2, 2, 16]}>
                 <HeaderSection category="Event" icon={IconCalendarEvent} title={evt.summary} />
                 <Container>
                     <Stack spacing={[4, 4, 8, 8, 8]} mx={[2, 2, 2, 2, 0]}>

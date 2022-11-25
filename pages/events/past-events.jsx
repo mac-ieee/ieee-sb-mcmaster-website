@@ -35,7 +35,7 @@ const PastEventsPage = () => {
                 title="Past Events and Workshops"
             />
             <EventsTabLayout>
-                <Container flexGrow={1} as={Stack} spacing={4} p={[4, 4, 4, 4, 0]}>
+                <Container flexGrow={1} as={Stack} spacing={4} mt={[2, 2, 2, 2, 16]}>
                     <Stack direction="row" alignItems="center" bg="blackAlpha.50" w="fit-content" rounded="lg" border="solid 1px" borderColor="blackAlpha.300">
                         <Text whiteSpace="nowrap" pr={2} pl={4}>Year -{'>'}</Text>
                         <Select

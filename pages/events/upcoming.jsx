@@ -6,7 +6,10 @@ import EventThumbnailCard from 'components/events/event-thumbnail-card'
 import { getUpcomingEvents } from '../../lib/google-calendar-api'
 
 const UpcomingEventsPage = (props) => {
+    const now = React.useMemo(() => new Date(), [])
+
     if (!props.evts) return null
+
 
     return (
         <>
@@ -14,7 +17,7 @@ const UpcomingEventsPage = (props) => {
                 title="Upcoming Events and Workshops"
             />
             <EventsTabSection>
-                <Container flexGrow={1} as={Stack} spacing={4} p={[4, 4, 4, 4, 0]}>
+                <Container flexGrow={1} as={Stack} spacing={4} mt={[2, 2, 2, 2, 16]}>
                     {/* <Stack direction="row" alignItems="center" bg="blackAlpha.50" w="fit-content" rounded="lg" border="solid 1px" borderColor="blackAlpha.300">
                         <Text whiteSpace="nowrap" pr={2} pl={4}>Year -{'>'}</Text>
                         <Select
@@ -38,7 +41,7 @@ const UpcomingEventsPage = (props) => {
                         minW="100%"
                     >
                         {props.evts.map((evt, i) => {
-                            return <EventThumbnailCard key={i} evt={evt} />;
+                            return <EventThumbnailCard now={now} key={i} evt={evt} />;
                         })}
                     </SimpleGrid> : <Center rounded="xl" bg="blackAlpha.50" display="flex" flexGrow={1}>No Upcoming Events.</Center>}
 
