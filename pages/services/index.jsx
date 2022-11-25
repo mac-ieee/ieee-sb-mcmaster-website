@@ -17,7 +17,7 @@ const ServicePage = () => {
                 description=""
             />
             <HeaderSection title={'Services'} icon={IconHeartHandshake}></HeaderSection>
-            <Container flex="1">
+            <Container mt={[2, 2, 2, 2, 16]}>
                 <SimpleGrid gap="4" columns={[1, 1, 2, 2, 3, 3]}>
                     {Object.entries(servicesData).map(([key, val]) => {
                         return <Link key={key} href={`/services/${key}`}>

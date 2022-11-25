@@ -58,7 +58,7 @@ const AboutChapterPage = () => {
                         return <ExecCard key={name} name={name} role={role} />
                     })}
                 </SimpleGrid> */}
-                <Container>
+                <Container mt={[2, 2, 2, 2, 16]}>
                     <SimpleGrid
                         w="100%"
                         spacing={4}
