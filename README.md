@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5ff67d4d-12d4-4a3b-837b-22b6c22f4855/deploy-status)](https://app.netlify.com/sites/keen-pasteur-77b50d/deploys)
+
 # Welcome to McMaster's IEEE Student Board Website/Commitee! https://www.ieeemcmaster.ca/
 
 This website serves to be a replacement of the currently deployed website, but due to circumstances with COVID-19 and just general busyness, has been left incomplete for a while.
