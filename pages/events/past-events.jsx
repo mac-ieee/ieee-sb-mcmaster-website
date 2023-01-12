@@ -8,6 +8,11 @@ import { getEventsWithinYear } from '../../lib/google-calendar-api';
 const PastEventsPage = () => {
     const [evts, setEvts] = React.useState([]);
     const [yearSelected, setYearSelected] = React.useState(new Date().getFullYear())
+    const yearOptions = []
+
+    for (let i = new Date().getFullYear(); i >= 2020; i--) {
+        yearOptions.push(i);
+    }
 
     const handleChange = e => {
         setYearSelected(e.target.value);
@@ -46,7 +51,7 @@ const PastEventsPage = () => {
                             value={yearSelected}
                             onChange={handleChange}
                         >
-                            {[2022, 2021, 2020].map(year => {
+                            {yearOptions.map(year => {
                                 return <option key={year} value={year}>{year}</option>;
                             })}
                         </Select>

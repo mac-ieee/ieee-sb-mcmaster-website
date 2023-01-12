@@ -48,16 +48,6 @@ const AboutChapterPage = () => {
                 description=""
             />
             <AboutTabLayout>
-                {/* <SimpleGrid
-                    w="100%"
-                    spacing={4}
-                    columns={{ base: 1, sm: 2, md: 4, lg: 6 }}
-                >
-                    {execs.map(exec => {
-                        const { name, role } = exec.attributes;
-                        return <ExecCard key={name} name={name} role={role} />
-                    })}
-                </SimpleGrid> */}
                 <Container mt={[2, 2, 2, 2, 16]}>
                     <SimpleGrid
                         w="100%"
@@ -68,11 +58,6 @@ const AboutChapterPage = () => {
                         {Object.entries(execs).map(([key, val]) => {
                             return <ExecCard key={key} name={val} role={key} />
                         })}
-
-                        {/* {execs.map(exec => {
-                        const { name, role } = exec.attributes;
-                        return <ExecCard key={name} name={name} role={role} />
-                    })} */}
                     </SimpleGrid>
                 </Container>
             </AboutTabLayout>
