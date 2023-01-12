@@ -9,6 +9,9 @@ const SocialBtn = () => {
 }
 
 const Footer = () => {
+
+    const year = React.useMemo(() => new Date().getFullYear(), [])
+
     const renderSocialInfo = () => {
         return (
             <>
@@ -67,7 +70,7 @@ const Footer = () => {
                     <Divider borderColor="blackAlpha.300" />
                     <Wrap spacing={4} fontSize="sm" align='center'>
                         <Image boxSize="5" src="/assets/ieee-sb-mcmaster-logo.png" alt="IEEE McMaster Student Branch Footer Logo"></Image>
-                        <Text>©2022 IEEE McMaster Student Branch.</Text>
+                        <Text>{`©${year} IEEE McMaster Student Branch.`}</Text>
 
                         {Object.entries(contactInfo).map(([_, val]) => {
                             return <Link href={val.href} key={_}>{`${_}: ${val.label}`}</Link>

@@ -61,7 +61,7 @@ const styles = {
         maxW: "container.xl",
         paddingInlineStart: "0rem",
         paddingInlineEnd: "0rem",
-        p: [4, 4, 4, 4, 0],
+        p: [4, 4, 4, 4, 4],
       },
     },
     Divider: {
