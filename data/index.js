@@ -22,12 +22,18 @@ export const chapterInfo = {
     emoji: "⚡",
     icon: IconBolt,
     logo: "/assets/PESLogo.png",
+    data: {
+      meetingTimes: "Fridays at 5:30PM-6:00PM EST at ITB-141 and on Discord",
+    },
   },
   "engineering-in-medicine-and-biology-society": {
     name: "Engineering In Medicine & Biology Society",
     emoji: "⚕️",
     icon: IconCell,
     logo: "/assets/EMBSLogo.png",
+    data: {
+      meetingTimes: "Sundays at 7pm on Discord",
+    },
   },
 };
 

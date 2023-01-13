@@ -13,6 +13,7 @@ import "@fontsource/inter/300.css";
 import "@fontsource/inter/200.css";
 import "@fontsource/inter/100.css";
 
+import "@fontsource/apfel-grotezk"
 import "@fontsource/ibm-plex-serif";
 
 import { ChakraProvider, Flex } from "@chakra-ui/react";
