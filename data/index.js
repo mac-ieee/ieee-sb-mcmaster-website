@@ -95,5 +95,5 @@ export const socialInfo = {
   insta: "https://www.instagram.com/mcmaster_ieee/",
   linkedin: "https://www.linkedin.com/company/mcmasterieee",
   github: "https://github.com/mac-ieee",
-  discord: "https://discord.com/invite/YFGcGfxmR7",
+  discord: "https://discord.gg/5S5pBy46dW",
 };
