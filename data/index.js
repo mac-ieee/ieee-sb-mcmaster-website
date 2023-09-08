@@ -55,31 +55,33 @@ export const servicesData = {
 
 export const execData = {
   "main-branch": {
-    "Branch Mentor": "Aron Markandaier",
-    "Branch Chair": "Isaiah Ngou",
+    "Branch Chair": "Tina Ismail",
     // @ts-ignore
-    "Branch Chair­": "Matteo Tullo",
-    "Branch Vice-Chair": "Tina Ismail",
-    "Branch Treasurer": "Daniel Wei",
-    "Branch Webmaster": "Felix Ha",
+    "Branch Vice Co-Chair": "Justin Lin",
+    "Branch Vice Co-Chair­": "Parth Mistry",
+    "Branch Mentor": "Aron Markandaier",
+    "Branch Treasurer": "Venkat Kanagarajamuthaly",
+    //"Branch Webmaster": "TBD",
     "Public Relations Head": "Yixin Wang",
+    "Branch Secretary": "Muhammad Faisal",
   },
   computer: {
-    "Computer Chair": "Corbin Jarrett",
-    "Computer Vice Chair": "Sabrina Sousa",
+    "Computer Chair": "Isaac Thomas",
+    "Branch Vice Co-Chair": "Aum Patel",
     // @ts-ignore (kind of a cheat to have duplicate using https://unicode-table.com/en/00AD/)
-    "Computer Vice Chair­": "Issac Thomas",
-    "Computer Secretary": "",
+    "Branch Vice Co-Chair­": "Marryam Kamal",
+    "Computer Secretary": "Manvendra",
   },
   "power-and-energy-society": {
-    "PES Chair": "Edward Kang",
-    "PES Vice-Chair": "Evan Tanudjaja",
-    "PES Secretary": "Ioannis Papaspyridis",
+    "PES Chair": "Evan Tanudjaja",
+    "PES Vice-Chair": "Ioannis Papaspyridis",
+    "PES Secretary": "Rehan Abbasi",
   },
   "engineering-in-medicine-and-biology-society": {
-    "EMBS Chair": "Rawan Mahdi",
-    "EMBS Vice-Chair": "Luna Aljammal",
-    "EMBS Secretary": "Allister Ashwal",
+    "EMBS Co-Chair": "Chris George",
+    "EMBS Co-Chair­": "Nishckria Nataraja Babu",
+    "EMBS Vice-Chair": "Alaa",
+    //"EMBS Secretary": "Allister Ashwal",
   },
 };
 export const contactInfo = {
