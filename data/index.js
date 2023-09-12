@@ -70,7 +70,7 @@ export const execData = {
     "Branch Vice Co-Chair": "Aum Patel",
     // @ts-ignore (kind of a cheat to have duplicate using https://unicode-table.com/en/00AD/)
     "Branch Vice Co-Chair­": "Marryam Kamal",
-    "Computer Secretary": "Manvendra",
+    "Computer Secretary": "Manvendra Jani",
   },
   "power-and-energy-society": {
     "PES Chair": "Evan Tanudjaja",
@@ -80,7 +80,7 @@ export const execData = {
   "engineering-in-medicine-and-biology-society": {
     "EMBS Co-Chair": "Chris George",
     "EMBS Co-Chair­": "Nishckria Nataraja Babu",
-    "EMBS Vice-Chair": "Alaa",
+    "EMBS Vice-Chair": "Alaa Abdelsalam",
     //"EMBS Secretary": "Allister Ashwal",
   },
 };
