@@ -33,7 +33,7 @@ const NAV_ITEMS = [
     label: 'Chapters',
     children: [
       {
-        label: 'Computer',
+        label: 'Computer Chapter',
         href: '/chapter/computer',
       },
       {

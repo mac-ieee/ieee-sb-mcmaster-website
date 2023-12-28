@@ -12,7 +12,7 @@ export const chapterInfo = {
     logo: "/assets/ieee-sb-mcmaster-logo.png",
   },
   computer: {
-    name: "Computer",
+    name: "Computer Chapter",
     emoji: "💻",
     icon: IconCpu,
     logo: "/assets/CSLogo.png",
@@ -23,7 +23,7 @@ export const chapterInfo = {
     icon: IconBolt,
     logo: "/assets/PESLogo.png",
     data: {
-      meetingTimes: "Fridays at 5:30PM-6:00PM EST at ITB-141 and on Discord",
+      meetingTimes: "Saturdays at 6:00PM EST at ITB-141 and on Discord",
     },
   },
   "engineering-in-medicine-and-biology-society": {
@@ -59,10 +59,10 @@ export const execData = {
     // @ts-ignore
     "Branch Vice Co-Chair": "Justin Lin",
     "Branch Vice Co-Chair­": "Parth Mistry",
-    "Branch Mentor": "Aron Markandaier",
+    "Branch Mentor": "Matteo Tullo",
     "Branch Treasurer": "Venkat Kanagarajamuthaly",
     //"Branch Webmaster": "TBD",
-    "Public Relations Head": "Yixin Wang",
+    //"Public Relations Head": "Yixin Wang",
     "Branch Secretary": "Muhammad Faisal",
   },
   computer: {
@@ -81,6 +81,7 @@ export const execData = {
     "EMBS Co-Chair": "Chris George",
     "EMBS Co-Chair­": "Nishckria Nataraja Babu",
     "EMBS Vice-Chair": "Alaa Abdelsalam",
+    "EMBS Secretary": "Nathan",
     //"EMBS Secretary": "Allister Ashwal",
   },
 };
